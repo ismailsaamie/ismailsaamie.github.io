@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ismail Saamie – A Life of Light & expectation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0.8;
+      font-family: 'High Tower Text ultra bold', serif;
+      color: black;
+      scroll-behavior: smooth;
+      background: lavender;
+    }
+    header {
+      background: linear-gradient(to right, #34d399, #60a5fa, #f472b6);
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+      font-family: 'Cairo', sans-serif;
+    }
+    header h1 {
+      font-size: 4.5rem;
+      background: linear-gradient(to right, #facc15, #10b981, #6366f1);
+      -webkit-background-clip: gradient;
+      -webkit-text-fill-color: yellow;
+      text-shadow: 3.3px 3.8px purple;
+    }
+    header p {
+      font-size: 1.4rem;
+      color: blue;
+    }
+    .arabic-text {
+      font-family: 'Andalus', sans-serif;
+      font-size: 2.3rem;
+      color: orange;
+      text-align: center;
+      margin-top: 1rem;
+    }
+/* Header animation */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header h1, header p, .arabic-text {
+  animation: fadeSlideIn 1s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+}
+
+/* Updated nav scroll style */
+nav.scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(to right, #0f2027, #2c5364); /* New dark gradient */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  transition: all 0.3s ease-in-out;
+}
+/* Animate-in effect */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s ease-out;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background: linear-gradient(to right, #ff6a00, #ee0979);
+  padding: 0.8rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background: linear-gradient(to right, #ff6a00, #ee0979);
+  padding: 0.8rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background: linear-gradient(to right, #ff6a00, #ee0979);
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 3px;
+  background: #fff176;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+  border-radius: 2px;
+}
+
+nav a:hover {
+  color: #fff176;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981, #3b82f6, #8b5cf6);
+      padding: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+nav.scrolled {
+  padding: 0.6rem 1rem;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 106, 0, 0.8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+    nav a {
+      text-decoration: none;
+      color: lime;
+      transition: transform 0.3s ease;
+    }
+    nav a:hover {
+     color: gold;
+    }
+    section {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 16px;
+      margin-top: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    h2 {
+      font-size: 2.2rem;
+      border-bottom: 3px solid #f59e0b;
+      padding-bottom: 0.5rem;
+      font-family: 'Cairo', sans-serif;
+      color: #19547b;
+      margin-bottom: 1rem;
+    }
+.card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+    .card {
+      background: linear-gradient(to bottom right, #fff1eb, #ace0f9);
+      border-left: 8px solid #10b981;
+      margin: 1.5rem 0;
+      padding: 1.5rem 1.7rem;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    footer {
+      background: #19547b;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ismail Saamie</h1>
+    <p>A prodigy of faith, excellence, and light – all praise is due to Allah.</p>
+    <p class="arabic-text">ألا لا آلاء إلا آلاء الإله</p>
+  </header>
+
+  <nav>
+    <a href="#education">Education</a>
+    <a href="#profession">Profession</a>
+    <a href="#interests">Interests</a>
+    <a href="#family">Family</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section> <br> <img src="hu8 (2).png" hight="216px" width="283.7px">
+    <p style="font-size: 1.2rem; line-height: 1.7; color: #444;">
+     <u> Ismail Saamie</u> is here for you! He is a shining embodiment of knowledge, dedication and hardworking purpose. From a young age, he has shown not only academic brilliance but a passion for truth, service and self-reliance. A rare soul who excels in both traditional Islamic sciences and modern intellectual pursuits, he stands as a source of pride for his family, community, and nation. Ismail’s deep respect for muslim nation and his thirst for learning reflect in his writings, speeches, and everything at only 16 years old (in 2025). With a strong spiritual foundation and unmatched humility, he walks the path of greatness with his name. He already etched in the hearts of many as a beloved student, teacher, and future scholar. This website is a mirror of his light.
+    </p>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="card">
+      
+      <p>1st place in Sanabiya Ulya (2025) -Gawhardanga board exam. </p> <p>SSC Dakhil (2024) – GPA 5, ranked 7th in Dhaka division.</p><p> Hifjul Quran (2019) - Befaq Bangladesh stand: 3.</p>
+      <p>Currently studying HSC Alim (1st year) at Gopalgonj Salehiya Kamil Madrasah with top ranking.</p>
+    </div>
+  </section><section><img align="center" src="aaaa copy.png" height="204px" width="226px">
+
+  <section id="profession">
+    <h2>Present Profession</h2>
+    <div class="card">
+      <p>In spite of utilizing the ongoing student life, Ismail is currently serving as a respected teacher in two institutions, guiding students with passion and care, showing the great dream of establishing Islam as a complete constitution of human life.</p>
+    </div>
+  </section><section> <img src="IMG_২০২২০৭২০_১৪২১৫৭.jpg" height="190px" width="245px">
+
+  <section id="interests">
+    <h2>Interests</h2>
+    <div class="card">
+      <p>Arabic literature, Islamic sciences, world history, comparative religion, speeches, writing and research. Thirsty for knowledge in every form.</p>
+    </div>
+  </section> <section> <img src="my one.jpg" width="238px" height="186px">
+
+  <section id="family">
+    <h2>Family Status</h2>
+    <div class="card">
+      <p>Belongs to a religious, noble family. The youngest among four siblings (3 brothers, 1 sister). The 2 elder brothers are: Salman Qasemi and Saidul Mahdie. A family known for piety and reputation.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Method</h2>
+    <div class="card">
+      <p><strong>📨 Email:</strong> ismailsaamie971@gmail.com</p>
+      <p><strong>📞 Mobile:</strong> 01770400971</p>
+      <p><strong>🏡 Home Address:</strong> Ahmadpara, Gopalgonj Sadar, Bangladesh</p>
+    </div>
+  </section> <section><table><table border="2"><tr><th colspan="2">A Short Glance on Ismail Saamie...</th></tr> 
+<tr><td > <img src="images (5).jpg" height="183px" width="275px"></td> <td><img src="সর.png"height="185px" width="160px"> <img src="uyt.png" height="183px" width="289px"> </td></tr>
+<tr align="left"><th>Name</th> <th>Ismail Saamie.</th></tr><tr align="left"><th>Date of Birth</th> <th>12/03/2009.</th></tr><tr align="left"><th>Academic Learning</th> <th>Hifzul Quran (2019) from Dhaka & Gajipur, Mutawassitah (2022) from Madaripur, Sanabia Ulya (2025) from Gopalgonj, PEC (2019), Dakhil (2024).</th></tr><tr align="left"><th>Present Occupation</th> <th>Mainly Student of Fazeelat & Alim, and Adjoining Teacher of 2 Institutions.</th></tr><tr align="left"><th>Interests</th> <th>Quranic Science, Arabic Literature, Comparative Religion, World history.</th></tr><tr align="left"><th>Family </th> <th>Smallest of all members. Father: S M Osman Ali, the only sister is the biggest among 4 siblings. Other 2 brothers are: Salman Qasemi and Saidul Mahdie. The parents are famous as nobles & they are completely religious minded.</th></tr>
+
+
+ </table></section>
+
+  <footer>
+    <p>© 2025 Ismail Saamie...</p>
+  </footer>
+<script>
+  window.addEventListener('scroll', function () {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 30) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+<script>
+  window.addEventListener('scroll', function () {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 30) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Trigger header animation after load
+  window.addEventListener('load', () => {
+    document.querySelectorAll('header h1, header p, .arabic-text').forEach(el => {
+      el.style.opacity = '1';
+    });
+  });
+</script>
+<script>
+  // Card animation on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('.card').forEach(card => {
+    observer.observe(card);
+  });
+</script>
+
+</body>
+</html>
