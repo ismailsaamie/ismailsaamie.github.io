@@ -76,6 +76,55 @@
       text-align: center;
       margin-top: 1rem;
     }
+    <style>
+.last-table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.last-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  word-wrap: break-word;
+}
+
+.last-table-container th,
+.last-table-container td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.last-table-container th {
+  background: #19547b;
+  color: white;
+  font-weight: bold;
+}
+
+.last-table-container td {
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* Small screen optimization */
+@media (max-width: 600px) {
+  .last-table-container table {
+    font-size: 0.9rem;
+  }
+  .last-table-container th,
+  .last-table-container td {
+    padding: 8px;
+  }
+  .last-table-container img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+</style>
 /* Header animation */
 @keyframes fadeSlideIn {
   from {
@@ -323,12 +372,51 @@ nav.scrolled {
       <p><strong>📞 Mobile:</strong> 01770400971</p>
       <p><strong>🏡 Home Address:</strong> Ahmadpara, Gopalgonj Sadar, Bangladesh</p>
     </div>
-  </section> <section><div class="card"><table><table border="2"><tr><th colspan="2">A Short Glance on Ismail Saamie...</th></tr> 
-<tr><td ><img src="সর.png"height="98px" width="81px"> </td> <td><img src="images (5).jpg" height="98px" width="163px"> <img src="uyt.png" height="98px" width="163px"> </td></tr>
-<tr align="left"><th>Name</th> <th>Ismail Saamie.</th></tr><tr align="left"><th>Date of Birth</th> <th>12/03/2009.</th></tr><tr align="left"><th>Academic Learning</th> <th>Hifzul Quran (2019) from Dhaka & Gajipur, Mutawassitah (2022) from Madaripur, Sanabia Ulya (2025) from Gopalgonj, PEC (2019), Dakhil (2024).</th></tr><tr align="left"><th>Present Occupation</th> <th>Mainly Student of Fazeelat & Alim, and Adjoining Teacher of 2 Institutions.</th></tr><tr align="left"><th>Interests</th> <th>Quranic Science, Arabic Literature, Comparative Religion, World history.</th></tr><tr align="left"><th>Family </th> <th>Smallest of all members. Father: S M Osman Ali, the only sister is the biggest among 4 siblings. Other 2 brothers are: Salman Qasemi and Saidul Mahdie. The parents are famous as nobles & they are completely religious minded.</th></tr>
+  </section> <section>
+  <div class="card">
+    <!-- 🌟 Responsive table container -->
+    <div class="last-table-container">
+      <table>
+        <tr>
+          <th colspan="2">A Short Glance on Ismail Saamie...</th>
+        </tr>
+        <tr>
+          <td>
+            <img src="সর.png" height="98px" width="81px">
+          </td>
+          <td>
+            <img src="images (5).jpg" height="98px" width="163px">
+            <img src="uyt.png" height="98px" width="163px">
+          </td>
+        </tr>
+        <tr align="left">
+          <th>Name</th>
+          <th>Ismail Saamie.</th>
+        </tr>
+        <tr align="left">
+          <th>Date of Birth</th>
+          <th>12/03/2009.</th>
+        </tr>
+        <tr align="left">
+          <th>Academic Learning</th>
+          <th>Hifzul Quran (2019) from Dhaka & Gajipur, Mutawassitah (2022) from Madaripur, Sanabia Ulya (2025) from Gopalgonj, PEC (2019), Dakhil (2024).</th>
+        </tr>
+        <tr align="left">
+          <th>Present Occupation</th>
+          <th>Mainly Student of Fazeelat & Alim, and Adjoining Teacher of 2 Institutions.</th>
+        </tr>
+        <tr align="left">
+          <th>Interests</th>
+          <th>Quranic Science, Arabic Literature, Comparative Religion, World History.</th>
+        </tr>
+        <tr align="left">
+          <th>Family</th>
+          <th>Smallest of all members. Father: S M Osman Ali, the only sister is the biggest among 4 siblings. Other 2 brothers are: Salman Qasemi and Saidul Mahdie. The parents are famous as nobles & they are completely religious minded.</th>
+        </tr>
+      </table>
+    </div>
   </div>
-
- </table></section>
+</section>
 
   <footer>
     <p>© 2025 Ismail Saamie...</p>
@@ -379,3 +467,4 @@ nav.scrolled {
 
 </body>
 </html>
+
