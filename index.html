@@ -51,41 +51,31 @@
       scroll-behavior: smooth;
       background: lavender;
     }
-height: 200vh; /* scroll করার জন্য */
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  background: black;
-  padding-top: 100px;
-}
-
+    .star-container img {
 .star-container img {
   width: 40%;
   height: auto;
   display: block;
   border-radius: 10px;
-  filter: blur(10px); /* প্রথমে blur */
-  transition: filter 0.1s linear; /* smooth effect */
+  filter: blur(10px);
+  opacity: 0;
+  animation: appear 2s forwards;
 }
-</style>
-</head>
-<body>
 
-<div class="star-container">
-  <img src="image.jpg" alt="Central Image" id="scrollImage">
-</div>
-
-<script>
-const img = document.getElementById('scrollImage');
-
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;       // scroll distance
-  const maxScroll = 300;                  // কত scroll এ blur শেষ হবে
-  const blurAmount = Math.max(10 - (scrollTop / maxScroll) * 10, 0);
-  img.style.filter = `blur(${blurAmount}px)`;
-});
-</script>
+@keyframes appear {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  40% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;   /* final visible state */
+    filter: blur(0);
+  }
+}
 
     header {
       background: linear-gradient(to right, #34d399, #60a5fa, #f472b6);
@@ -361,6 +351,7 @@ nav.scrolled {
     <a href="#contact">Contact</a>
   </nav>
 
+  <img src="إسماعيل السامي شعار أنيق.png" hight="216px" width="283.7px">
   
   <section> <br> <h2> <div class="star-container"> <img src="إسماعيل السامي شعار أنيق.png" hight="216px" width="283.7px" style="display: block; margin: 0 auto;"></h2> </div>
     <p style="font-size: 1.2rem; line-height: 1.7; color: #444;">
@@ -375,7 +366,7 @@ nav.scrolled {
       <p>1st place in Sanabiya Ulya (2025) -Gawhardanga board exam. </p> <p>SSC Dakhil (2024) – GPA 5, ranked 7th in Dhaka division.</p><p> Hifjul Quran (2019) - Befaq Bangladesh stand: 3.</p>
       <p>Currently studying HSC Alim (2nd year) at Gopalgonj Salehiya Kamil Madrasah with top ranking.</p>
     </div>
-  
+
   </section><section> <div class="star-container"><img align="center" src="aaaa copy.png" height="204px" width="226px" style="display: block; margin: 0 auto;"> </div>
 
   <section id="profession">
@@ -383,7 +374,7 @@ nav.scrolled {
     <div class="card">
       <p>In spite of utilizing the ongoing student life, Ismail is currently serving as a respected teacher in two institutions, guiding students with passion and care, showing the great dream of establishing Islam as a complete constitution of human life.</p>
     </div>
- 
+
   </section><section> <div class="star-container"><img src="IMG_২০২২০৭২০_১৪২১৫৭.jpg" height="190px" width="245px" style="display: block; margin: 0 auto;"></div>
 
   <section id="interests">
@@ -464,9 +455,3 @@ nav.scrolled {
 
 </body>
 </html>
-
-
-
-
-
-
