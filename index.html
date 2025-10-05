@@ -51,30 +51,41 @@
       scroll-behavior: smooth;
       background: lavender;
     }
+height: 200vh; /* scroll করার জন্য */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background: black;
+  padding-top: 100px;
+}
+
 .star-container img {
   width: 40%;
   height: auto;
   display: block;
   border-radius: 10px;
-  filter: blur(10px);
-  opacity: 0;
-  animation: appear 2s forwards;
+  filter: blur(10px); /* প্রথমে blur */
+  transition: filter 0.1s linear; /* smooth effect */
 }
+</style>
+</head>
+<body>
 
-@keyframes appear {
-  0% {
-    opacity: 0;
-    filter: blur(10px);
-  }
-  40% {
-    opacity: 1;
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;   /* final visible state */
-    filter: blur(0);
-  }
-}
+<div class="star-container">
+  <img src="image.jpg" alt="Central Image" id="scrollImage">
+</div>
+
+<script>
+const img = document.getElementById('scrollImage');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;       // scroll distance
+  const maxScroll = 300;                  // কত scroll এ blur শেষ হবে
+  const blurAmount = Math.max(10 - (scrollTop / maxScroll) * 10, 0);
+  img.style.filter = `blur(${blurAmount}px)`;
+});
+</script>
 
     header {
       background: linear-gradient(to right, #34d399, #60a5fa, #f472b6);
@@ -453,6 +464,7 @@ nav.scrolled {
 
 </body>
 </html>
+
 
 
 
