@@ -543,39 +543,27 @@ nav.scrolled {
   });
 </script>
 <script>
-    (function() {
-        const image = document.getElementById('main-img');
-        const loader = document.getElementById('img-loader');
+function showImage() {
+    const loader = document.getElementById('img-loader');
+    const image = document.getElementById('main-img');
 
-        function hideLoaderShowImage() {
-            if (loader) loader.style.display = 'none';
-            if (image) image.classList.add('visible');
-        }
+    // লোডার লুকানো এবং ইমেজ দেখানো
+    loader.style.display = 'none';
+    image.style.display = 'block';
+    image.classList.add('fade-in'); // ছবি আসার সময় সুন্দর ট্রানজিশন
+}
 
-        // ১. যদি ইমেজটি ইতিমধ্যে লোড হয়ে থাকে (ক্যাশ থেকে)
-        if (image.complete) {
-            hideLoaderShowImage();
-        } else {
-            // ২. ইমেজ লোড হওয়ার জন্য অপেক্ষা
-            image.onload = hideLoaderShowImage;
-
-            // ৩. যদি ইমেজ লোড হতে ভুল হয় (পাথ না পায়)
-            image.onerror = function() {
-                if (loader) loader.innerHTML = "Image not found";
-                console.error("ইমেজটি পাওয়া যায়নি। ফাইল নাম বা পাথ চেক করুন।");
-            };
-        }
-    })();
+// যদি ছবি আগে থেকেই ব্রাউজারে সেভ থাকে তবে সরাসরি দেখাবে
+window.onload = function() {
+    const image = document.getElementById('main-img');
+    if (image.complete) {
+        showImage();
+    }
+};
 </script>
-
 
 </body>
 </html>
-
-
-
-
-
 
 
 
