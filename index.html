@@ -24,6 +24,22 @@
 <meta name="twitter:image" content="https://ismailsaamie.github.io/إسماعيل السامي شعار أنيق.png">
 
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ismail Saamie",
+  "url": "https://ismailsaamie.github.io/",
+  "description": "Official personal website of Ismail Saamie, sharing background, profession, interests, and contact information.",
+  "jobTitle": "Teacher",
+  "sameAs": ["https://github.com/ismailsaamie"],
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Darut Taqwa Ideal Madrasah"
+  },
+  "image": "https://ismailsaamie.github.io/my one.jpg"
+}
+</script>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
 
@@ -147,16 +163,6 @@ h2{
   position:relative;
 }
 
-.skeleton{
-  width:284px;
-  height:280px;
-  background:linear-gradient(90deg,#eee 25%,#ddd 50%,#eee 75%);
-  background-size:200% 100%;
-  animation:shimmer 1.4s infinite;
-  border-radius:8px;
-  position:absolute; /* overlay করতে */
-}
-
 .image-wrap img{
   display:none;
   width:284px;
@@ -277,7 +283,7 @@ footer{
 
  <section> <br> <div class="star-container">
     <!-- এটি আপনার ছবির বদলে লোডিং এনিমেশন দেখাবে -->
-    <div id="img-loader" class="skeleton-box"></div>
+   
     <!-- আপনার আসল ছবি -->
     <img src="إسماعيل السامي شعار أنيق.png" 
          id="main-img"
@@ -304,7 +310,7 @@ footer{
 
   </section><section id="profession"> <div class="star-container">
     <!-- লোডার বা স্কেলিটন -->
-    <div id="img-loader" class="skeleton-box"></div>
+ 
     
     <!-- আপনার আসল ছবি -->
     <img src="WhatsApp Image 2026-01-04 at 13.05.02_aca7a303.jpg" 
@@ -324,7 +330,7 @@ footer{
   
   </section></section> <section id="interests"><div class="star-container">
     <!-- লোডার বা স্কেলিটন -->
-    <div id="img-loader" class="skeleton-box"></div>
+
     
     <!-- আপনার আসল ছবি -->
     <img src="me.png" 
@@ -343,7 +349,7 @@ footer{
   
    <section id="family"><div class="star-container">
     <!-- লোডার বা স্কেলিটন -->
-    <div id="img-loader" class="skeleton-box"></div>
+
     
     <!-- আপনার আসল ছবি -->
     <img src="my one.jpg" 
@@ -382,36 +388,7 @@ footer{
   © Ismail Saamie, 2026
 </footer>
 
-<script>
-document.querySelectorAll(".image-wrap").forEach(box=>{
-  const img = box.querySelector("img");
-  const loader = box.querySelector(".skeleton");
 
-  img.onload = ()=>{
-    loader.style.display="none";
-    img.style.display="block";
-  };
-
-  if(img.complete) img.onload();
-});
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Ismail Saamie",
-  "url": "https://ismailsaamie.github.io/",
-  "description": "Official personal website of Ismail Saamie, sharing background, profession, interests, and contact information.",
-  "jobTitle": "Teacher",
-  "sameAs": ["https://github.com/ismailsaamie"],
-  "alumniOf": {
-    "@type": "EducationalOrganization",
-    "name": "Darut Taqwa Ideal Madrasah"
-  },
-  "image": "https://ismailsaamie.github.io/my one.jpg"
-}
-</script>
 
 
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
@@ -440,6 +417,7 @@ document.querySelectorAll(".image-wrap").forEach(box=>{
 
 </body>
 </html>
+
 
 
 
