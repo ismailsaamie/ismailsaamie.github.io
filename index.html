@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><title>Ismail Saamie | Personal Website</title>
-<title>Ismail Saamie | Personal Website</title><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Ismail Saamie",
-  "url": "https://ismailsaamie.github.io/",
-  "description": "Official personal website of Ismail Saamie, sharing background, profession, interests, and contact information.",
-  "jobTitle": "Teacher",
-  "sameAs": [
-    "https://github.com/ismailsaamie"
-  ],
+<head>
 
-  "alumniOf": {
-    "@type": "EducationalOrganization",
-    "name": "Darut Taqwa Ideal Madrasah"
-  },
-  "image": "https://ismailsaamie.github.io/my one.jpg"
-}
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ismail Saamie | Personal Website</title>
 
 <meta name="description" content="Welcome to the official website of Ismail Saamie — discover my education, profession, interests, and contact details.">
 <meta name="robots" content="index, follow">
@@ -37,213 +23,98 @@
 <meta name="twitter:description" content="Explore my professional life, hobbies, and more.">
 <meta name="twitter:image" content="https://ismailsaamie.github.io/إسماعيل السامي شعار أنيق.png">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ismail Saamie",
+  "url": "https://ismailsaamie.github.io/",
+  "description": "Official personal website of Ismail Saamie, sharing background, profession, interests, and contact information.",
+  "jobTitle": "Teacher",
+  "sameAs": ["https://github.com/ismailsaamie"],
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Darut Taqwa Ideal Madrasah"
+  },
+  "image": "https://ismailsaamie.github.io/my one.jpg"
+}
+</script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ismail Saamie – A Life of Light & expectation</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0.8;
-      font-family: 'High Tower Text ultra bold', serif;
-      color: black;
-      scroll-behavior: smooth;
-      background: lavender;
-    }
-    .star-container img {
-  width: 40%;
-  height: auto;
-  display: block;
-  border-radius: 10px;
-  filter: blur(10px);
-  opacity: 0;
-  animation: appear 10s forwards;
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:#D9D6FF;
+  font-family:'Maiandra GD', serif;
+  scroll-behavior:smooth;
 }
 
-@keyframes appear {
-  0% {
-    opacity: 0;
-    filter: blur(10px);
-  }
-  40% {
-    opacity: 1;
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;   /* final visible state */
-    filter: blur(0);
-  }
+/* HEADER */
+header{
+  background:linear-gradient(to top,#34d399,#60a5fa,#f472b6);
+  color:white;
+  text-align:center;
+  padding:4rem 2rem 3rem;
+  font-family:'Copperplate Gothic Light',sans-serif;
 }
-/* কন্টেইনার স্টাইল */
-.star-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 216px; /* ছবির হাইট অনুযায়ী */
-}
-
-/* লোডিং বক্সের ডিজাইন */
-.star-container {
-    width: 100%;
-    display: flex;           /* ফ্লেক্সবক্স ব্যবহার করা হয়েছে */
-    justify-content: center; /* আড়াআড়িভাবে মাঝখানে আনবে */
-    align-items: center;     /* লম্বালম্বিভাবে মাঝখানে আনবে */
-    text-align: center;
-    min-height: 216px;      /* আপনার ছবির হাইট অনুযায়ী */
-}
-
-/* লোডারটি মাঝখানে রাখার জন্য */
-.skeleton-box {
-    width: 283.7px;
-    height: 216px;
-    margin: 0 auto;         /* মাঝখানে রাখার জন্য */
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-    border-radius: 8px;
-}
-
-@keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-.fade-in {
-    animation: fadeInEffect 0.8s ease-in;
-}
-
-@keyframes fadeInEffect {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-
-    header {
-      background: linear-gradient(to right, #34d399, #60a5fa, #f472b6);
-      color: white;
-      text-align: center;
-      padding: 4rem 2rem 3rem;
-      font-family: 'Cairo', sans-serif;
-    }
-    header h1 {
+header h1 {
       font-size: 4.5rem;
-      background: linear-gradient(to right, #facc15, #10b981, #6366f1);
       -webkit-background-clip: gradient;
-      -webkit-text-fill-color: yellow;
+      -webkit-text-fill-color: #FFE3FD;
       text-shadow: 3.3px 3.8px purple;
+      border-left:2.5px solid #1C4163;
+      border-right:2.5px solid #1C4163;
     }
-    header p {
-      font-size: 1.4rem;
-      color: blue;
-    }
-    .arabic-text {
+header p{
+  font-family:'Papyrus',sans-serif;
+  font-size:1.6rem;
+  color:#370A4D;
+}
+.arabic-text {
       font-family: 'Andalus', sans-serif;
       font-size: 2.3rem;
-      color: orange;
+      color: #4C7825;
       text-align: center;
       margin-top: 1rem;
     }
-/* Header animation */
-@keyframes fadeSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.image-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-header h1, header p, .arabic-text {
-  animation: fadeSlideIn 1s ease-out forwards;
-  opacity: 0;
-  animation-delay: 0.2s;
-}
 
-/* Updated nav scroll style */
-nav.scrolled {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 0.6rem 1rem;
-  backdrop-filter: blur(10px);
-  background: linear-gradient(to right, #0f2027, #2c5364); /* New dark gradient */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  z-index: 999;
-  transition: all 0.3s ease-in-out;
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  z-index:999;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:1.2rem;
+  background:linear-gradient(to right,#543699,#ee0979,#543699);
+  padding:0.73rem;
+  font-weight:bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
-/* Animate-in effect */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.7s ease-out;
+nav a{
+  color:#F9FFD0;
+  text-decoration:none;
 }
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
+nav.scrolled{
+  backdrop-filter:blur(7px);
 }
-
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  background: linear-gradient(to right, #ff6a00, #ee0979);
-  padding: 0.8rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  background: linear-gradient(to right, #ff6a00, #ee0979);
-  padding: 0.8rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  background: linear-gradient(to right, #ff6a00, #ee0979);
-  padding: 1rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-nav a {
-  text-decoration: none;
-  color: white;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
 nav a::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: 0px;
   width: 100%;
   height: 3px;
-  background: #fff176;
+  background: #B5FF0B;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.4s ease-out;
@@ -251,7 +122,7 @@ nav a::after {
 }
 
 nav a:hover {
-  color: #fff176;
+  color: #80FF35;
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
 }
 
@@ -260,76 +131,100 @@ nav a:hover::after {
   transform-origin: left;
 }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981, #3b82f6, #8b5cf6);
-      padding: 1rem;
-      font-weight: bold;
-      font-size: 1.2rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    }
-nav.scrolled {
-  padding: 0.6rem 1rem;
-  backdrop-filter: blur(10px);
-  background: rgba(255, 106, 0, 0.8);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease-in-out;
+/* SECTION */
+section{
+  padding:1.1rem;
+  max-width:1000px;
+  margin:1.4rem auto;
+  background:rgba(255,255,255,.92);
+  border-radius:16px;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+h2{
+  font-size:2.2rem;
+  color:#023F57;
+  border-bottom:3px solid #A89608;
+  padding-bottom:.5rem;
 }
 
-    nav a {
-      text-decoration: none;
-      color: lime;
-      transition: transform 0.3s ease;
-    }
-    nav a:hover {
-     color: gold;
-    }
-    section {
-      padding: 0.99rem;
-      max-width: 1000px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 16px;
-      margin-top: 1.4rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    h2 {
-      font-size: 2.2rem;
-      border-bottom: 3px solid #f59e0b;
-      padding-bottom: 0.5rem;
-      font-family: 'Cairo', sans-serif;
-      color: green;
-      margin-bottom: 1rem;
-    }
-.card {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.6s ease-out;
+/* CARD */
+.card{
+  background:linear-gradient(to bottom right,#FFD8D7,#ace0f9);
+  border-left:8px solid #44660C;
+  border-radius:12px;
+  margin:1.5rem 0;
+  padding:1.3rem;
+}
+.image-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:1.5rem 0;
+  position:relative;
 }
 
-.card.visible {
-  opacity: 1;
-  transform: translateY(0);
+.skeleton{
+  width:284px;
+  height:216px;
+  background:linear-gradient(90deg,#eee 25%,#ddd 50%,#eee 75%);
+  background-size:200% 100%;
+  animation:shimmer 1.4s infinite;
+  border-radius:8px;
+  position:absolute; /* overlay করতে */
 }
 
-    .card {
-      background: linear-gradient(to bottom right, #fff1eb, #ace0f9);
-      border-left: 8px solid #10b981;
-      margin: 1.5rem 0;
-      padding: 1.5rem 1.7rem;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .last-table-container {
+.image-wrap img{
+  display:none;
+  width:284px;
+  height:216px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+
+/* IMAGE LOADER */
+.image-box{
+  display:flex;
+  justify-content:center;
+  margin:1rem 0;
+}
+.skeleton-box{
+  width:283.7px;
+  height:216px;
+  background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);
+  background-size:200% 100%;
+  animation:shimmer 1.5s infinite;
+  border-radius:8px;
+}
+@keyframes shimmer{
+  0%{background-position:200% 0}
+  100%{background-position:-200% 0}
+}
+.image-box img{
+  display:none;
+  border-radius:8px;
+}
+
+/* TABLE */
+.last-table-container{
+  width:100%;
+  overflow-x:auto;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+th,td{
+  border:1px solid #ccc;
+  padding:10px;
+  text-align:left;
+}
+.last-table-container {
   width: 100%;
   overflow-x: auto;
-  margin-top: 1rem;
+  margin-top: 1.7rem;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .last-table-container table {
@@ -341,63 +236,64 @@ nav.scrolled {
 .last-table-container th,
 .last-table-container td {
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 12px;
   text-align: center;
   vertical-align: middle;
 }
 
 .last-table-container th {
-  background: #19547b;
-  color: white;
+  background: linear-gradient(to top right,#C8DBAC,#9DBBFC,#C8DBAC);
+  color: #044506;
 }
 
 .last-table-container td {
-  background: #f9f9f9;
+  background: linear-gradient(to top right,#FFE1FE,#9DBBFC,#C8DBAC);
 }
 
 /* মোবাইল স্ক্রিনের জন্য */
 @media (max-width: 600px) {
   .last-table-container table {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   .last-table-container th,
   .last-table-container td {
-    padding: 8px;
+    padding: 10px;
   }
   .last-table-container img {
     max-width: 100%;
     height: auto;
   }
 }
-    footer {
-      background: linear-gradient(to left, #34d399, #60a5fa, #f472b6);
-      color: blue;
-      text-align: center;
-      padding: 0.2rem;
-      font-size: 0.9rem;
-    }
-  </style>
+
+/* FOOTER */
+footer{
+  background:linear-gradient(to right,#34d399,#60a5fa,#f472b6);
+  color:red;
+  text-align:center;
+  padding:.5rem;
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <h1>Ismail Saamie</h1>
-    <p>A prodigy of faith, excellence, and light – all praise is due to Allah.</p>
-    <p class="arabic-text">ألا لا آلاء إلا آلاء الإله</p>
-  </header>
 
-  <nav>
-    <a href="#education">Education</a>
-    <a href="#profession">Profession</a>
-    <a href="#interests">Interests</a>
-    <a href="#family">Family</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<header>
+  <h1>Ismail Saamie</h1>
+  <p>A prodigy of faith, excellence, and light – Alhamdulillah!</p>
+  <div class="arabic-text">ألا لا آلاء إلا آلاء الإله</div>
+</header>
 
- 
-  <section> <br> <h2> <div class="star-container">
+<nav>
+  <a href="#education">Education</a>
+  <a href="#profession">Profession</a>
+  <a href="#interests">Interests</a>
+  <a href="#family">Family</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+ <section> <br> <div class="star-container">
     <!-- এটি আপনার ছবির বদলে লোডিং এনিমেশন দেখাবে -->
     <div id="img-loader" class="skeleton-box"></div>
-    
     <!-- আপনার আসল ছবি -->
     <img src="إسماعيل السامي شعار أنيق.png" 
          id="main-img"
@@ -405,11 +301,14 @@ nav.scrolled {
          width="283.7px" 
          style="display: none; margin: 0 auto;" 
          onload="showImage()">
-</div></h2>
+</div> 
+
+<section>
+    <h2>Welcome!</h2> 
     <p style="font-size: 1.2rem; line-height: 1.7; color: #444;">
     <div class="card"> <u> Ismail Saamie</u> is here for you! He is a shining embodiment of knowledge, dedication and hardworking purpose. From a young age, he has shown not only academic brilliance but a passion for truth, service and self-reliance. A rare soul who excels in both traditional Islamic sciences and modern intellectual pursuits, he stands as a source of pride for his family, community, and nation. Ismail’s deep respect for muslim nation and his thirst for learning reflect in his writings, speeches, and everything at only 17 years old (in 2026). With a strong spiritual foundation and unmatched humility, he walks the path of greatness with his name. He already etched in the hearts of many as a beloved student, teacher, and future scholar. This website is a mirror of his light.
     </p> </div>
-  </section>
+  </section></section>
 
   <section id="education">
     <h2>Education</h2>
@@ -419,7 +318,7 @@ nav.scrolled {
       <p>Currently studying HSC Alim (2nd year) at Gopalgonj Salehiya Kamil Madrasah with top ranking.</p>
     </div>
 
-  </section><section> <div class="star-container">
+  </section><section id="profession"> <div class="star-container">
     <!-- লোডার বা স্কেলিটন -->
     <div id="img-loader" class="skeleton-box"></div>
     
@@ -433,13 +332,13 @@ nav.scrolled {
          onload="showImage()">
 </div>
 
-  <section id="profession">
+  <section>
     <h2>Present Profession</h2>
     <div class="card">
       <p>In spite of utilizing the ongoing student life, Ismail is currently serving as a respected teacher in an islamic educational institution, guiding students with passion and care, showing the great dream of establishing Islam as a complete constitution of human life.</p>
     </div>
   
-  </section></section> <section><div class="star-container">
+  </section></section> <section id="interests"><div class="star-container">
     <!-- লোডার বা স্কেলিটন -->
     <div id="img-loader" class="skeleton-box"></div>
     
@@ -453,12 +352,12 @@ nav.scrolled {
          onload="showImage()">
 </div>
  
-    <section id="interests"><h2>Interests</h2>
+    <section><h2>Interests</h2>
     <div class="card">
-      <p>Arabic literature, Islamic sciences, world history, comparative religion, seerah, speeches, writing and research. Thirsty for knowledge in every form. <br> Ismail was runner up in <a href="https://siratolympiad.com/">Bangladesh Sirat Olympiad</a> 2025.</p>
+      <p>Arabic literature, Islamic sciences, world history, comparative religion, seerah, political phylosophy, social science, logical debates, speech, writing and research. Thirsty for knowledge in every form. <br><br> Ismail was runner up in <a href="https://siratolympiad.com/">Bangladesh Sirat Olympiad</a> 2025.</p>
     </div></section></section>
   
-   <section><div class="star-container">
+   <section id="family"><div class="star-container">
     <!-- লোডার বা স্কেলিটন -->
     <div id="img-loader" class="skeleton-box"></div>
     
@@ -473,110 +372,48 @@ nav.scrolled {
 </div>
 
   
-    <section id="family"><h2>Family Status</h2>
+    <section><h2>Family Status</h2>
     <div class="card">
       <p>Belongs to a religious, noble family. The youngest among four siblings (3 brothers, 1 sister). The 2 elder brothers are: Salman Qasemi and Saidul Mahdie. A family known for piety and reputation.</p>
     </div></section></section>
  
 
  
-    <section id="contact"><h2>Contact Method</h2>
+    <section id="contact"><h2>Contact Info</h2>
     <div class="card">
       <p><strong>📨 Email:</strong> ismailsaamie971@gmail.com</p>
       <p><strong>📞 Mobile:</strong> 01770400971</p>
       <p><strong>🏡 Home Address:</strong> Ahmadpara, Gopalgonj Sadar, Bangladesh</p>
-      <p><strong>🔗 Facebook Account Link: <a href="https://www.facebook.com/profile.php?id=61559552766899">Ismail Saamie</a></p>
-      <p><strong>🔗 LinkedIn Profile Link: <a href="https://www.linkedin.com/in/ismail-saamie/">Ismail Saamie</a></p>
-      <p><strong>🔗 Instagram Profile Link: <a href="https://www.instagram.com/ismailsaamie/">Ismail Saamie</a></p>
+      <p><strong>🔗 Facebook Account Link:</strong> <a href="https://www.facebook.com/profile.php?id=61559552766899">Ismail Saamie</a></p>
+      <p><strong>🔗 LinkedIn Profile Link:</strong> <a href="https://www.linkedin.com/in/ismail-saamie/">Ismail Saamie</a></p>
+      <p><strong>🔗 Instagram Profile Link:</strong> <a href="https://www.instagram.com/ismailsaamie/">Ismail Saamie</a></p>
     </div></section>
-   <div class="last-table-container"><table><table border="2"><tr><th colspan="2">A Short Glance on Ismail Saamie...</th></tr> 
+   <div class="last-table-container"><table><table border="2"><tr><th colspan="2"><strong>A Short Glance on Ismail Saamie...</strong></th></tr> 
 <tr><td ><img src="সর.png"height="98px" width="81px"> </td> <td><img src="images (5).jpg" height="98px" width="163px"> <img src="uyt.png" height="98px" width="163px"> </td></tr>
-<tr align="left"><th>Name</th> <th>Ismail Saamie.</th></tr><tr align="left"><th>Date of Birth</th> <th>12/03/2009.</th></tr><tr align="left"><th>Academic Learning</th> <th>Hifzul Quran (2019) from Dhaka & Gajipur, Mutawassitah (2022) from Madaripur, Sanabia Ulya (2025) from Gopalgonj, PEC (2019), Dakhil (2024).</th></tr><tr align="left"><th>Present Occupation</th> <th>Mainly Student of Fazeelat & Alim, and Adjoining Teacher of an Institution.</th></tr><tr align="left"><th>Interests</th> <th>Quranic Science, Arabic Literature, Comparative Religion, World history.</th></tr><tr align="left"><th>Family </th> <th>Smallest of all members. Father: S M Osman Ali, the only sister is the eldest among 4 siblings. Other 2 brothers are: Salman Qasemi and Saidul Mahdie. The parents are famous as nobles & they are completely religious minded.</th></tr>
+<tr align="left"><th>Name</th> <th>Ismail Saamie.</th></tr><tr align="left"><th>Date of Birth</th> <th>12/03/2009.</th></tr><tr align="left"><th>Academic Learning</th> <th>Hifzul Quran (2019) from Dhaka & Gajipur, Mutawassitah (2022) from Madaripur, Sanabia Ulya (2025) from Gopalgonj, PEC (2019), Dakhil (2024).</th></tr><tr align="left"><th>Present Occupation</th> <th>Mainly Student of Fazeelat & Alim, and Adjoining Teacher of a madrasah.</th></tr><tr align="left"><th>Interests</th> <th>Quranic Science, Arabic Literature, Comparative Religion, Seerah, World history.</th></tr><tr align="left"><th>Family </th> <th>Smallest of all members. Father: S M Osman Ali, the only sister is the eldest among 4 siblings. Other 2 brothers are: Salman Qasemi and Saidul Mahdie. The parents are famous as nobles & they are completely religious minded.</th></tr>
   </div>
 
- </table>
+ </table><br>
+<footer>
+  © Ismail Saamie, 2026
+</footer>
 
-  <footer>
-    <p>© 2025 Ismail Saamie...</p>
-  </footer>
 <script>
-  window.addEventListener('scroll', function () {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 30) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  });
-</script>
-<script>
-  window.addEventListener('scroll', function () {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 30) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  });
+document.querySelectorAll(".image-wrap").forEach(box=>{
+  const img = box.querySelector("img");
+  const loader = box.querySelector(".skeleton");
 
-  // Trigger header animation after load
-  window.addEventListener('load', () => {
-    document.querySelectorAll('header h1, header p, .arabic-text').forEach(el => {
-      el.style.opacity = '1';
-    });
-  });
-</script>
-<script>
-  // Card animation on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
+  img.onload = ()=>{
+    loader.style.display="none";
+    img.style.display="block";
+  };
 
-  document.querySelectorAll('.card').forEach(card => {
-    observer.observe(card);
-  });
+  if(img.complete) img.onload();
+});
 </script>
-<script>
-function showImage() {
-    const loader = document.getElementById('img-loader');
-    const image = document.getElementById('main-img');
 
-    // লোডার লুকানো এবং ইমেজ দেখানো
-    loader.style.display = 'none';
-    image.style.display = 'block';
-    image.classList.add('fade-in'); // ছবি আসার সময় সুন্দর ট্রানজিশন
-}
 
-// যদি ছবি আগে থেকেই ব্রাউজারে সেভ থাকে তবে সরাসরি দেখাবে
-window.onload = function() {
-    const image = document.getElementById('main-img');
-    if (image.complete) {
-        showImage();
-    }
-};
-</script>
+
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
