@@ -414,6 +414,31 @@ document.querySelectorAll(".image-wrap").forEach(box=>{
 </script>
 
 
+    <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
+    <script>
+      // showImage নামের ফাংশনটি সংজ্ঞায়িত করা হলো
+      function showImage() {
+        // 'img-loader' আইডি যুক্ত উপাদানটি খুঁজে বের করা হলো (স্কেলিটন)
+        const skeletonLoader = document.getElementById('img-loader');
+        
+        // 'main-img' আইডি যুক্ত উপাদানটি খুঁজে বের করা হলো (আসল ছবি)
+        const mainImage = document.getElementById('main-img');
+
+        // যদি স্কেলিটন লোডারটি পাওয়া যায়, তবে সেটিকে লুকিয়ে দেওয়া হলো
+        if (skeletonLoader) {
+          skeletonLoader.style.display = 'none';
+        }
+
+        // যদি আসল ছবিটি পাওয়া যায়, তবে সেটিকে দৃশ্যমান করা হলো
+        // *গুরুত্বপূর্ণ: নিশ্চিত করুন আপনার CSS-এ main-img প্রথমে লুকানো আছে*
+        if (mainImage) {
+          mainImage.style.display = 'block'; // অথবা 'inline-block' আপনার লেআউট অনুযায়ী
+        }
+      }
+    </script>
+
+
 </body>
 </html>
+
 
