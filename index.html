@@ -239,43 +239,7 @@ th,td{
 .last-table-container td {
   background: linear-gradient(to top right,#FFE1FE,#9DBBFC,#C8DBAC);
 }
-  /* মোবাইল ফ্রেম কন্টেইনার */
-  .mobile-royal-frame {
-    position: relative;
-    width: 100%;
-    max-width: 320px; /* মোবাইলের জন্য পারফেক্ট সাইজ */
-    padding: 8px; /* ফ্রেমের চিকন বর্ডার */
-    border-radius: 20px;
-    background: var(--royal-gold);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    line-height: 0; /* ইমেজের নিচের এক্সট্রা গ্যাপ সরাতে */
-  }
 
-  /* ইনার গ্লাস বর্ডার */
-  .inner-glass {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    background: #000;
-    box-shadow: inset 0 0 10px rgba(0,0,0,1);
-  }
-
-  .main-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 12px;
-    /* মোবাইল স্ক্রিনে কালার বুস্ট করার জন্য */
-    filter: contrast(1.1) brightness(1.05);
-  }
-}
-
-  /* টাচ করলে হালকা গ্লো ইফেক্ট */
-  .mobile-royal-frame:active {
-    transform: scale(0.98);
-    box-shadow: 0 0 20px var(--soft-glow);
-    transition: 0.2s;
-  }
 
 /* মোবাইল স্ক্রিনের জন্য */
 @media (max-width: 600px) {
@@ -319,11 +283,7 @@ footer{
 </nav>
 
  <section> <br> 
-   <div class="mobile-royal-frame">
-  <div class="inner-glass">
-    <!-- আপনার ছবির লিঙ্ক এখানে দিন -->
-    <img src="إسماعيل السامي شعار أنيق.png" alt="Stylish Mobile View" class="main-img">
-  </div><div class="star-container">
+<div class="star-container">
     <!-- আপনার আসল ছবি -->
     <img src="إسماعيل السامي شعار أنيق.png" 
          id="main-img"
@@ -452,6 +412,7 @@ footer{
 
 </body>
 </html>
+
 
 
 
