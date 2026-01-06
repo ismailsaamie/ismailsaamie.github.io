@@ -80,6 +80,43 @@ header p{
       text-align: center;
       margin-top: 1rem;
     }
+  /* Header animation */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0.1;
+    transform: translateY(-95px);
+  }
+  to {
+    opacity: 30;
+    transform: translateY(0);
+  }
+}
+
+header h1 {
+  animation: fadeSlideIn 1.3s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0s;
+}
+header p {
+  animation: fadeSlideIn 0.9s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0s;
+}
+.arabic-text {
+  animation: fadeSlideIn 0.6s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0s;
+}
+  .card {
+  opacity: 1000;
+  transform: translateY(40px);
+  transition: all  0.9s ease-out;
+}
+
+.card.visible {
+  opacity: 1000;
+  transform: translateY(0);
+}
 .image-wrap{
   display:flex;
   justify-content:center;
@@ -155,6 +192,7 @@ h2{
   border-radius:12px;
   margin:1.5rem 0;
   padding:1.3rem;
+  transition: transform 0.9s, box-shadow 0.9s;
 }
 
 /* TABLE */
@@ -355,10 +393,26 @@ footer{
         }
       }
     </script>
+<script>
+  // Card animation on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
 
+  document.querySelectorAll('.card').forEach(card => {
+    observer.observe(card);
+  });
+</script>
 
 </body>
 </html>
+
 
 
 
