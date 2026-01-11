@@ -427,39 +427,25 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
-  (function() {
-    // পেজের সব ইমেজ খুঁজে বের করবে
-    const images = document.querySelectorAll('img');
+  function showImage(imgElement) {
+    const isInTable = imgElement.closest('table');
 
-    images.forEach(img => {
-      // ফাংশন যা ইমেজ দেখানোর কাজ করবে
-      const revealImage = (el) => {
-        const isInTable = el.closest('table');
-        if (isInTable) {
-          el.style.display = "inline-block";
-          el.style.verticalAlign = "middle";
-        } else {
-          el.style.display = "block";
-          el.style.margin = "10px auto"; // সেন্টারে রাখার জন্য
-        }
-        el.style.opacity = "1";
-      };
+    // ইমেজটি দৃশ্যমান করা
+    imgElement.style.visibility = "visible";
+    imgElement.style.opacity = "1";
 
-      // যদি ইমেজটি আগেই লোড হয়ে থাকে (Cache)
-      if (img.complete) {
-        revealImage(img);
-      } else {
-        // যদি লোড হতে সময় নেয়
-        img.addEventListener('load', () => revealImage(img));
-        
-        // যদি ইমেজ লোড হতে ফেইল করে, তাও যেন নিচের লেখা উপরে না উঠে থাকে
-        img.addEventListener('error', () => {
-          img.style.display = "none";
-        });
-      }
-    });
-  })();
+    if (isInTable) {
+        imgElement.style.display = "inline-block";
+        imgElement.style.height = "auto"; // আসল সাইজ নিবে
+        imgElement.style.verticalAlign = "middle";
+    } else {
+        imgElement.style.display = "block";
+        imgElement.style.height = "auto"; // আসল সাইজ নিবে
+        imgElement.style.margin = "10px auto";
+    }
+  }
 </script>
+
 
 
 
@@ -483,6 +469,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
