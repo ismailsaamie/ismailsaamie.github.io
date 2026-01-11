@@ -425,22 +425,39 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
-  function showImage(imgElement) {
-    // ইমেজটি কি কোনো টেবিলের ভেতরে আছে?
-    const isInTable = imgElement.closest('table');
+  function handleAllImages() {
+    // পেজের সব ইমেজ ধরবে যেগুলোতে onload দেওয়া আছে
+    const allImages = document.querySelectorAll('img');
 
-    if (isInTable) {
-        // টেবিলের ভেতর থাকলে পাশাপাশি
-        imgElement.style.display = "inline-block";
-        imgElement.style.verticalAlign = "middle";
-    } else {
-        // টেবিলের বাইরে থাকলে নিচে নিচে (ব্লক)
-        imgElement.style.display = "block";
-    }
-
-    // ইমেজটি দৃশ্যমান করা
-    imgElement.style.opacity = "1";
+    allImages.forEach(img => {
+      // যদি ইমেজটি অলরেডি লোড হয়ে থাকে (ক্যাশড ইমেজ সহ)
+      if (img.complete) {
+        applyImageStyle(img);
+      } else {
+        // যদি লোড হতে বাকি থাকে, তবে লোড হওয়ার পর ফাংশন কল হবে
+        img.onload = function() {
+          applyImageStyle(this);
+        };
+      }
+    });
   }
+
+  function applyImageStyle(img) {
+    const isInTable = img.closest('table');
+    
+    if (isInTable) {
+      img.style.display = "inline-block";
+      img.style.verticalAlign = "middle";
+    } else {
+      img.style.display = "block";
+      img.style.marginLeft = "auto";
+      img.style.marginRight = "auto";
+    }
+    img.style.opacity = "1";
+  }
+
+  // পেজ লোড হওয়ার সাথে সাথে চেক করবে
+  window.onload = handleAllImages;
 </script>
 
 
@@ -464,6 +481,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
