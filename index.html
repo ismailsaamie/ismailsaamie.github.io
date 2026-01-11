@@ -312,7 +312,7 @@ footer{
          width="283.7px" 
          style="display: none; margin: 0 auto;" 
       onload="showImage(this)" 
-     style="display: none; opacity: 0; transition: opacity 1s ease-in-out;">
+     style="position: absolute; visibility: hidden; height: 1px; width: 1px; opacity: 0;">
 </div> 
 
 <section>
@@ -333,7 +333,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          loading="lazy"
       style="display: none; margin: 0 auto;"
       onload="showImage(this)" 
-       style="visibility: hidden; height: 0; opacity: 0; transition: opacity 0.5s;">
+     style="position: absolute; visibility: hidden; height: 1px; width: 1px; opacity: 0;">
      
 </p><section>
     <h2>Education</h2>
@@ -352,7 +352,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          loading="lazy"
       style="display: none; margin: 0 auto;"
       onload="showImage(this)" 
-       style="visibility: hidden; height: 0; opacity: 0; transition: opacity 0.5s;">
+       style="position: absolute; visibility: hidden; height: 1px; width: 1px; opacity: 0;">
 
 </p>
 
@@ -370,7 +370,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          loading="lazy"
       style="display: none; margin: 0 auto;"
       onload="showImage(this)" 
- style="visibility: hidden; height: 0; opacity: 0; transition: opacity 0.5s;">
+     style="position: absolute; visibility: hidden; height: 1px; width: 1px; opacity: 0;">
 </p>
  
     <section><h2>Interests</h2>
@@ -386,7 +386,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          loading="lazy"
       style="display: none; margin: 0 auto;"
       onload="showImage(this)" 
- style="visibility: hidden; height: 0; opacity: 0; transition: opacity 0.5s;">
+     style="position: absolute; visibility: hidden; height: 1px; width: 1px; opacity: 0;">
       </p>
 
   
@@ -405,8 +405,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          loading="lazy"
       style="display: none; margin: 0 auto;"
       onload="showImage(this)" 
- style="visibility: hidden; height: 0; opacity: 0; transition: opacity 0.5s;">
-      </p><section><h2>Contact Info</h2>
+     style="position: absolute; visibility: hidden; height: 1px; width: 1px; opacity: 0;">      </p><section><h2>Contact Info</h2>
     <div class="card">
       <p><strong>📨 Email:</strong> ismailsaamie971@gmail.com</p>
       <p><strong>📞 Mobile:</strong> 01770400971</p>
@@ -434,17 +433,20 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
   function showImage(imgElement) {
-    // ইমেজ লোড হলে তাকে তার আসল রূপ ফিরিয়ে দাও
-    imgElement.style.width = "100%"; // অথবা আপনার প্রয়োজন মতো সাইজ
+    // লোড হওয়ার পর সব লুকানো স্টাইল মুছে ফেলা হচ্ছে
+    imgElement.style.position = "static";
+    imgElement.style.visibility = "visible";
     imgElement.style.height = "auto";
+    imgElement.style.width = "auto"; // অথবা আপনার প্রয়োজন অনুযায়ী (যেমন ১০০%)
     imgElement.style.opacity = "1";
-    
+
     const isInTable = imgElement.closest('table');
     if (isInTable) {
-        imgElement.style.width = "45%"; // টেবিলের ভেতর ছোট দেখাবে
         imgElement.style.display = "inline-block";
+        imgElement.style.width = "45%"; // টেবিলের জন্য সাইজ
     } else {
         imgElement.style.display = "block";
+        imgElement.style.width = "100%"; // বাইরের জন্য ফুল উইডথ
     }
   }
 </script>
@@ -473,6 +475,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
