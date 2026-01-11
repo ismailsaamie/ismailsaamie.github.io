@@ -437,24 +437,43 @@ style="display: none; opacity: 0;">     </p><section><h2>Contact Info</h2>
 
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
-  function showImage(imgElement) {
-    const isInTable = imgElement.closest('table');
+  function fixMyImages() {
+    // পেজের সব ইমেজ ধরো
+    const allImgs = document.querySelectorAll('img');
 
-    if (isInTable) {
-      // টেবিলের ভেতর থাকলে পাশাপাশি সেন্টারে থাকবে
-      imgElement.style.display = "inline-block";
-      imgElement.style.verticalAlign = "middle";
-    } else {
-      // টেবিলের বাইরে থাকলে ফুল উইডথ এবং ব্লক হবে
-      imgElement.style.display = "block";
-      imgElement.style.width = "100%"; // প্রয়োজনমতো ১০০% বা অটো দিন
-      imgElement.style.margin = "10px auto";
-    }
-    
-    // ইমেজটি দৃশ্যমান করা
-    imgElement.style.opacity = "1";
+    allImgs.forEach(img => {
+      // ইমেজটি পুরোপুরি লোড হয়ে গেলে বা ক্যাশে থাকলে
+      if (img.complete && img.naturalWidth > 0) {
+        applyStyle(img);
+      } else {
+        // নাহলে লোড হওয়ার পর স্টাইল দাও
+        img.onload = () => applyStyle(img);
+      }
+    });
   }
+
+  function applyStyle(el) {
+    const isInTable = el.closest('table');
+    
+    if (isInTable) {
+      el.style.display = "inline-block";
+      el.style.verticalAlign = "middle";
+      el.style.width = "45%"; // টেবিলের জন্য সাইজ
+    } else {
+      el.style.display = "block";
+      el.style.width = "100%"; // বাইরের জন্য ফুল উইডথ
+      el.style.margin = "10px auto";
+    }
+    el.style.opacity = "1";
+    el.style.height = "auto";
+  }
+
+  // পেজ লোড হওয়া মাত্রই রান করো
+  window.addEventListener('load', fixMyImages);
+  // ইন কেস পেজ খুব দ্রুত লোড হয়
+  fixMyImages();
 </script>
+
 
 
 
@@ -480,6 +499,7 @@ style="display: none; opacity: 0;">     </p><section><h2>Contact Info</h2>
 
 </body>
 </html>
+
 
 
 
