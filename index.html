@@ -331,7 +331,7 @@ footer{
          height="280px" 
          width="283.7px" 
       onload="showImage(this)" 
-     style="visibility: hidden; height: 0; opacity: 0; overflow: hidden;">
+     style="opacity: 0; height: 1px; width: 1px; overflow: hidden; visibility: hidden;">
 </div> 
 
 <section>
@@ -350,7 +350,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          height="233px" 
          width="283.7px" 
       onload="showImage(this)" 
-     style="visibility: hidden; height: 0; opacity: 0; overflow: hidden;">
+     style="opacity: 0; height: 1px; width: 1px; overflow: hidden; visibility: hidden;">
    
 </p><section>
     <h2>Education</h2>
@@ -367,7 +367,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          height="280px" 
          width="283.7px" 
       onload="showImage(this)" 
-     style="visibility: hidden; height: 0; opacity: 0; overflow: hidden;">
+     style="opacity: 0; height: 1px; width: 1px; overflow: hidden; visibility: hidden;">
 
 </p>
 
@@ -384,7 +384,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          width="283.7px" 
   
       onload="showImage(this)" 
-     style="visibility: hidden; height: 0; opacity: 0; overflow: hidden;">
+     style="opacity: 0; height: 1px; width: 1px; overflow: hidden; visibility: hidden;">
 </p>
  
     <section><h2>Interests</h2>
@@ -398,7 +398,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          height="216px" 
          width="283.7px" 
       onload="showImage(this)" 
-     style="visibility: hidden; height: 0; opacity: 0; overflow: hidden;">
+     style="opacity: 0; height: 1px; width: 1px; overflow: hidden; visibility: hidden;">
       </p>
 
   
@@ -415,7 +415,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          height="216px" 
          width="283.7px" 
       onload="showImage(this)" 
-     style="visibility: hidden; height: 0; opacity: 0; overflow: hidden;">
+     style="opacity: 0; height: 1px; width: 1px; overflow: hidden; visibility: hidden;">
      </p><section><h2>Contact Info</h2>
     <div class="card">
       <p><strong>📨 Email:</strong> ismailsaamie971@gmail.com</p>
@@ -443,32 +443,30 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
-  function fixImages() {
-    const allImages = document.querySelectorAll('img');
-
-    allImages.forEach(img => {
-      // ইমেজ যদি অলরেডি লোড হয়ে থাকে (ক্যাশ)
-      if (img.complete && img.naturalWidth > 0) {
-        showThem(img);
-      } else {
-        // নাহলে লোড হওয়ার জন্য ইভেন্ট লিসেনার
-        img.onload = function() { showThem(this); };
+  (function() {
+    const checkImages = () => {
+      const imgs = document.getElementsByTagName('img');
+      for (let img of imgs) {
+        // ইমেজ যদি লোড হয়ে থাকে (ক্যাশ বা লাইভ)
+        if (img.complete && img.naturalWidth > 0) {
+          const isInTable = img.closest('table');
+          
+          // স্টাইল ফোর্সফুলি সেট করা হচ্ছে
+          img.style.setProperty('display', isInTable ? 'inline-block' : 'block', 'important');
+          img.style.setProperty('opacity', '1', 'important');
+          img.style.setProperty('height', 'auto', 'important');
+          img.style.setProperty('visibility', 'visible', 'important');
+        }
       }
+    };
+
+    // বারবার চেক করবে যতক্ষণ না সব ইমেজ লোড হয় (Interval)
+    const interval = setInterval(checkImages, 500);
+    window.addEventListener('load', () => {
+      checkImages();
+      setTimeout(() => clearInterval(interval), 5000); // ৫ সেকেন্ড পর চেক বন্ধ হবে
     });
-  }
-
-  function showThem(el) {
-    const isInTable = el.closest('table');
-    // স্টাইল রিসেট করা
-    el.style.opacity = "1";
-    el.style.display = isInTable ? "inline-block" : "block";
-    el.style.height = "auto";
-    el.style.visibility = "visible";
-  }
-
-  // পেজ লোড হওয়া মাত্রই চেক করা
-  window.addEventListener('DOMContentLoaded', fixImages);
-  window.addEventListener('load', fixImages);
+  })();
 </script>
 
 
@@ -499,6 +497,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
