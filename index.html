@@ -331,7 +331,7 @@ footer{
          height="280px" 
          width="283.7px" 
       onload="showImage(this)" 
-     style="opacity: 0; max-height: 0; overflow: hidden;">
+     style="visibility: hidden; height: 0; opacity: 0; overflow: hidden;">
 </div> 
 
 <section>
@@ -350,7 +350,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          height="233px" 
          width="283.7px" 
       onload="showImage(this)" 
-     style="opacity: 0; max-height: 0; overflow: hidden;">
+     style="visibility: hidden; height: 0; opacity: 0; overflow: hidden;">
    
 </p><section>
     <h2>Education</h2>
@@ -367,7 +367,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          height="280px" 
          width="283.7px" 
       onload="showImage(this)" 
-     style="opacity: 0; max-height: 0; overflow: hidden;">
+     style="visibility: hidden; height: 0; opacity: 0; overflow: hidden;">
 
 </p>
 
@@ -384,7 +384,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          width="283.7px" 
   
       onload="showImage(this)" 
-     style="opacity: 0; max-height: 0; overflow: hidden;">
+     style="visibility: hidden; height: 0; opacity: 0; overflow: hidden;">
 </p>
  
     <section><h2>Interests</h2>
@@ -398,7 +398,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          height="216px" 
          width="283.7px" 
       onload="showImage(this)" 
-     style="opacity: 0; max-height: 0; overflow: hidden;">
+     style="visibility: hidden; height: 0; opacity: 0; overflow: hidden;">
       </p>
 
   
@@ -415,7 +415,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          height="216px" 
          width="283.7px" 
       onload="showImage(this)" 
-     style="opacity: 0; max-height: 0; overflow: hidden;">
+     style="visibility: hidden; height: 0; opacity: 0; overflow: hidden;">
      </p><section><h2>Contact Info</h2>
     <div class="card">
       <p><strong>📨 Email:</strong> ismailsaamie971@gmail.com</p>
@@ -443,33 +443,34 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
-  function showImage(img) {
-    // ইমেজ লোড হলে এই ফাংশনটি কাজ করবে
-    const isInTable = img.closest('table');
+  function fixImages() {
+    const allImages = document.querySelectorAll('img');
 
-    // টেবিলের ভেতর থাকলে inline-block, বাইরে থাকলে block
-    if (isInTable) {
-        img.style.display = "inline-block";
-        img.style.verticalAlign = "middle";
-    } else {
-        img.style.display = "block";
-        img.style.margin = "10px auto";
-    }
-    
-    // ইমেজটি দৃশ্যমান করে দিন
-    img.style.opacity = "1";
-    img.style.height = "auto";
-  }
-
-  // পেজ ওপেন হওয়ার সাথে সাথে একবার চেক করবে (ক্যাশ করা ইমেজের জন্য)
-  document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll('img[onload]').forEach(img => {
-      if (img.complete) {
-        showImage(img);
+    allImages.forEach(img => {
+      // ইমেজ যদি অলরেডি লোড হয়ে থাকে (ক্যাশ)
+      if (img.complete && img.naturalWidth > 0) {
+        showThem(img);
+      } else {
+        // নাহলে লোড হওয়ার জন্য ইভেন্ট লিসেনার
+        img.onload = function() { showThem(this); };
       }
     });
-  });
+  }
+
+  function showThem(el) {
+    const isInTable = el.closest('table');
+    // স্টাইল রিসেট করা
+    el.style.opacity = "1";
+    el.style.display = isInTable ? "inline-block" : "block";
+    el.style.height = "auto";
+    el.style.visibility = "visible";
+  }
+
+  // পেজ লোড হওয়া মাত্রই চেক করা
+  window.addEventListener('DOMContentLoaded', fixImages);
+  window.addEventListener('load', fixImages);
 </script>
+
 
 
 
@@ -498,6 +499,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
