@@ -331,7 +331,7 @@ footer{
          height="280px" 
          width="283.7px" 
       onload="showImage(this)" 
-style="display: none; opacity: 0;"></div> 
+style="position: absolute; visibility: hidden; opacity: 0;"></div> 
 
 <section>
     <h2>Welcome!</h2> 
@@ -349,7 +349,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          height="233px" 
          width="283.7px" 
       onload="showImage(this)" 
-style="display: none; opacity: 0;">     
+style="position: absolute; visibility: hidden; opacity: 0;">     
 </p><section>
     <h2>Education</h2>
     <div class="card">
@@ -365,7 +365,7 @@ style="display: none; opacity: 0;">
          height="280px" 
          width="283.7px" 
       onload="showImage(this)" 
-style="display: none; opacity: 0;">
+style="position: absolute; visibility: hidden; opacity: 0;">
 </p>
 
   <section><h2>Present Profession</h2>
@@ -381,7 +381,7 @@ style="display: none; opacity: 0;">
          width="283.7px" 
   
       onload="showImage(this)" 
-style="display: none; opacity: 0;"></p>
+style="position: absolute; visibility: hidden; opacity: 0;"></p>
  
     <section><h2>Interests</h2>
     <div class="card">
@@ -394,7 +394,7 @@ style="display: none; opacity: 0;"></p>
          height="216px" 
          width="283.7px" 
       onload="showImage(this)" 
-style="display: none; opacity: 0;">      </p>
+style="position: absolute; visibility: hidden; opacity: 0;">      </p>
 
   
     <section><h2>Family Status</h2>
@@ -410,7 +410,7 @@ style="display: none; opacity: 0;">      </p>
          height="216px" 
          width="283.7px" 
       onload="showImage(this)" 
-style="display: none; opacity: 0;">     </p><section><h2>Contact Info</h2>
+style="position: absolute; visibility: hidden; opacity: 0;">     </p><section><h2>Contact Info</h2>
     <div class="card">
       <p><strong>📨 Email:</strong> ismailsaamie971@gmail.com</p>
       <p><strong>📞 Mobile:</strong> 01770400971</p>
@@ -437,41 +437,21 @@ style="display: none; opacity: 0;">     </p><section><h2>Contact Info</h2>
 
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
-  function fixMyImages() {
-    // পেজের সব ইমেজ ধরো
-    const allImgs = document.querySelectorAll('img');
+  function showImage(img) {
+    // ইমেজ লোড হলে তাকে তার জায়গায় ফিরিয়ে আনা
+    img.style.position = "static"; 
+    img.style.visibility = "visible";
+    img.style.opacity = "1";
 
-    allImgs.forEach(img => {
-      // ইমেজটি পুরোপুরি লোড হয়ে গেলে বা ক্যাশে থাকলে
-      if (img.complete && img.naturalWidth > 0) {
-        applyStyle(img);
-      } else {
-        // নাহলে লোড হওয়ার পর স্টাইল দাও
-        img.onload = () => applyStyle(img);
-      }
-    });
-  }
-
-  function applyStyle(el) {
-    const isInTable = el.closest('table');
-    
+    const isInTable = img.closest('table');
     if (isInTable) {
-      el.style.display = "inline-block";
-      el.style.verticalAlign = "middle";
-      el.style.width = "45%"; // টেবিলের জন্য সাইজ
+        img.style.display = "inline-block";
+        img.style.verticalAlign = "middle";
     } else {
-      el.style.display = "block";
-      el.style.width = "100%"; // বাইরের জন্য ফুল উইডথ
-      el.style.margin = "10px auto";
+        img.style.display = "block";
+        img.style.margin = "10px auto"; // বাইরের ইমেজকে মাঝখানে রাখবে
     }
-    el.style.opacity = "1";
-    el.style.height = "auto";
   }
-
-  // পেজ লোড হওয়া মাত্রই রান করো
-  window.addEventListener('load', fixMyImages);
-  // ইন কেস পেজ খুব দ্রুত লোড হয়
-  fixMyImages();
 </script>
 
 
@@ -499,6 +479,7 @@ style="display: none; opacity: 0;">     </p><section><h2>Contact Info</h2>
 
 </body>
 </html>
+
 
 
 
