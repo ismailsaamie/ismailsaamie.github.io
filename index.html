@@ -131,7 +131,13 @@ header p {
   justify-content:center;
   align-items:center;
 }
-
+img[loading="lazy"] {
+    display: block; /* যাতে ব্রাউজার ইমেজটি ডিটেক্ট করতে পারে */
+    height: 1px;    /* প্রায় জিরো হাইট, যাতে ফাঁকা জায়গা না থাকে */
+    width: 1px;     /* একদম ছোট বিন্দু হয়ে থাকবে */
+    opacity: 0;
+    overflow: hidden;
+}
 
 /* NAV */
 nav{
@@ -428,23 +434,21 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
   function showImage(imgElement) {
-    const isInTable = imgElement.closest('table');
-
-    // ইমেজটি দৃশ্যমান করা
-    imgElement.style.visibility = "visible";
+    // ইমেজ লোড হলে তাকে তার আসল রূপ ফিরিয়ে দাও
+    imgElement.style.width = "100%"; // অথবা আপনার প্রয়োজন মতো সাইজ
+    imgElement.style.height = "auto";
     imgElement.style.opacity = "1";
-
+    
+    const isInTable = imgElement.closest('table');
     if (isInTable) {
+        imgElement.style.width = "45%"; // টেবিলের ভেতর ছোট দেখাবে
         imgElement.style.display = "inline-block";
-        imgElement.style.height = "auto"; // আসল সাইজ নিবে
-        imgElement.style.verticalAlign = "middle";
     } else {
         imgElement.style.display = "block";
-        imgElement.style.height = "auto"; // আসল সাইজ নিবে
-        imgElement.style.margin = "10px auto";
     }
   }
 </script>
+
 
 
 
@@ -469,6 +473,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
