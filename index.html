@@ -204,6 +204,31 @@ h2{
   /* অথবা দুটি মান দিয়ে ওভাল আকৃতি তৈরি করতে: */
   /* border-radius: 30px 50px; */
 }
+  <style>
+  /* সব ইমেজ শুরুতে অদৃশ্য থাকবে এবং জায়গা নেবে না */
+  img {
+    display: none;
+    opacity: 0;
+    border-radius: 15px !important; /* আপনার কাঙ্ক্ষিত রেডিয়াস */
+    overflow: hidden;
+  }
+
+  /* টেবিলের বাইরের ইমেজের জন্য */
+  img.show-block {
+    display: block !important;
+    margin: 15px auto;
+    opacity: 1;
+  }
+
+  /* টেবিলের ভেতরের ইমেজের জন্য */
+  img.show-inline {
+    display: inline-block !important;
+    vertical-align: middle;
+    opacity: 1;
+    max-width: 45%; /* টেবিলের জন্য কন্ট্রোল */
+  }
+</style>
+
 img {
   /* শুরুতে ইমেজগুলো একদম অদৃশ্য এবং কোনো জায়গা নিবে না */
   height: 0;
@@ -330,9 +355,7 @@ footer{
       alt="Rounded Image" class="rounded-image"
          height="280px" 
          width="283.7px" 
-      onload="showImage(this)" 
-     style="opacity: 0; height: 1px; width: 1px; overflow: hidden; visibility: hidden;">
-</div> 
+      onload="showImage(this)" ></div> 
 
 <section>
     <h2>Welcome!</h2> 
@@ -349,9 +372,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
       alt="Rounded Image" class="rounded-image"
          height="233px" 
          width="283.7px" 
-      onload="showImage(this)" 
-     style="opacity: 0; height: 1px; width: 1px; overflow: hidden; visibility: hidden;">
-   
+      onload="showImage(this)">   
 </p><section>
     <h2>Education</h2>
     <div class="card">
@@ -366,9 +387,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
       alt="Rounded Image" class="rounded-image"
          height="280px" 
          width="283.7px" 
-      onload="showImage(this)" 
-     style="opacity: 0; height: 1px; width: 1px; overflow: hidden; visibility: hidden;">
-
+      onload="showImage(this)">
 </p>
 
   <section><h2>Present Profession</h2>
@@ -383,9 +402,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          height="280px" 
          width="283.7px" 
   
-      onload="showImage(this)" 
-     style="opacity: 0; height: 1px; width: 1px; overflow: hidden; visibility: hidden;">
-</p>
+      onload="showImage(this)"></p>
  
     <section><h2>Interests</h2>
     <div class="card">
@@ -397,8 +414,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
       alt="Rounded Image" class="rounded-image"
          height="216px" 
          width="283.7px" 
-      onload="showImage(this)" 
-     style="opacity: 0; height: 1px; width: 1px; overflow: hidden; visibility: hidden;">
+      onload="showImage(this)">
       </p>
 
   
@@ -414,8 +430,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
       alt="Rounded Image" class="rounded-image"
          height="216px" 
          width="283.7px" 
-      onload="showImage(this)" 
-     style="opacity: 0; height: 1px; width: 1px; overflow: hidden; visibility: hidden;">
+      onload="showImage(this)">
      </p><section><h2>Contact Info</h2>
     <div class="card">
       <p><strong>📨 Email:</strong> ismailsaamie971@gmail.com</p>
@@ -443,47 +458,31 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 <script>
   (function() {
-    const checkImages = () => {
-      const imgs = document.getElementsByTagName('img');
-      for (let img of imgs) {
+    function revealImages() {
+      const imgs = document.querySelectorAll('img');
+      imgs.forEach(img => {
         if (img.complete && img.naturalWidth > 0) {
           const isInTable = img.closest('table');
-          
-          // ১. দৃশ্যমান করা
-          img.style.setProperty('opacity', '1', 'important');
-          img.style.setProperty('visibility', 'visible', 'important');
-          img.style.setProperty('overflow', 'hidden', 'important');
-
-          // ২. আপনার দেওয়া রেডিয়াস (এখানে আপনার পছন্দের মাপ দিন)
-          img.style.setProperty('border-radius', '15px', 'important'); 
-
-          // ৩. মাপ ঠিক করা (ট্যাগ থেকে width/height টেনে আনা)
-          let attrWidth = img.getAttribute('width');
-          let attrHeight = img.getAttribute('height');
-
-          if (attrWidth) img.style.setProperty('width', attrWidth + 'px', 'important');
-          if (attrHeight) img.style.setProperty('height', attrHeight + 'px', 'important');
-
-          if (isInTable) {
-            img.style.setProperty('display', 'inline-block', 'important');
-            // টেবিলের ভেতর আপনার দেওয়া মাপ বড় হলে সেটাকে কন্ট্রোল করা
-            img.style.setProperty('max-width', '45%', 'important');
-          } else {
-            img.style.setProperty('display', 'block', 'important');
-            img.style.setProperty('margin', '15px auto', 'important');
-            img.style.setProperty('max-width', '100%', 'important');
-          }
+          // ক্লাস যোগ করে ইমেজটিকে দৃশ্যমান করা
+          img.classList.add(isInTable ? 'show-inline' : 'show-block');
+        } else {
+          // যদি লোড হতে বাকি থাকে
+          img.addEventListener('load', function() {
+            const isInTable = this.closest('table');
+            this.classList.add(isInTable ? 'show-inline' : 'show-block');
+          });
         }
-      }
-    };
+      });
+    }
 
-    const interval = setInterval(checkImages, 500);
-    window.addEventListener('load', () => {
-      checkImages();
-      setTimeout(() => clearInterval(interval), 5000);
-    });
+    // পেজ লোড হওয়ার সাথে সাথে এবং পরে চেক করা
+    revealImages();
+    window.addEventListener('load', revealImages);
+    // ইন কেস কোনো ইমেজ মিস হয়
+    setInterval(revealImages, 1000);
   })();
 </script>
+
 
 
 
@@ -516,6 +515,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
