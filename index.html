@@ -411,7 +411,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
    <div class="last-table-container"><table><table border="2"><tr><th colspan="2"><strong>A Short Glance on Ismail Saamie...</strong></th></tr> 
 <tr><td style="text-align: center; vertical-align: middle;"><p align="center"><img src="সর.png" height="98px" width="81px" onload="showImage(this)" 
      style="display: none; opacity: 0; transition: opacity 0.5s ease-in-out;"></p> </td> <td><div style="display: flex; justify-content: center; align-items: center; gap: 5px;"><img src="images (5).jpg" align="center" height="98px" width="163px" onload="showImage(this)" 
-     style="display: none; opacity: 0; transition: opacity 0.5s ease-in-out;"> <img src="cr.jpg" align="center" height="98px" width="163px" onload="showImage(this)" 
+     style="display: none; opacity: 0; transition: opacity 0.5s ease-in-out;"> <img src="cr.jpg" height="98px" width="163px" onload="showImage(this)" 
      style="display: none; opacity: 0; transition: opacity 0.5s ease-in-out;"> </div></td></tr>
 <tr align="left"><th>Name</th> <th>Ismail Saamie.</th></tr><tr align="left"><th>Date of Birth</th> <th>12/03/2009.</th></tr><tr align="left"><th>Academic Learning</th> <th>Hifzul Quran (2019) from Dhaka & Gajipur, Mutawassitah (2022) from Madaripur, Sanabia Ulya (2025) from Gopalgonj, PEC (2019), Dakhil (2024).</th></tr><tr align="left"><th>Present Occupation</th> <th>Mainly Student of Fazeelat & Alim, and Adjoining Teacher of a madrasah.</th></tr><tr align="left"><th>Interests</th> <th>Quranic Science, Arabic Literature, Philosophical Epistemology, Political Phylosophy, Comparative Religion, Seerah, World history.</th></tr><tr align="left"><th>Family </th> <th>Smallest of all members. Father: S M Osman Ali, the only sister is the eldest among 4 siblings. Other 2 brothers are: Salman Qasemi and Saidul Mahdie. The parents are famous as nobles & they are completely religious minded.</th></tr>
   </div>
@@ -427,25 +427,32 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
   function showImage(imgElement) {
-    // ইমেজটি কি কোনো টেবিলের ভেতরে আছে? 
-    // .closest('table') দিয়ে আমরা তা সহজেই চেক করতে পারি
+    // ইমেজটি কি কোনো টেবিলের ভেতরে আছে?
     const isInTable = imgElement.closest('table');
-
+    
     if (isInTable) {
-        // টেবিলের ভেতর থাকলে পাশাপাশি দেখাবে
-        imgElement.style.display = "inline-block";
-        imgElement.style.verticalAlign = "middle";
+      imgElement.style.display = "inline-block";
+      imgElement.style.verticalAlign = "middle";
     } else {
-        // টেবিলের বাইরে থাকলে নিচে নিচে (ব্লক) দেখাবে
-        imgElement.style.display = "block";
-        imgElement.style.marginLeft = "auto";
-        imgElement.style.marginRight = "auto";
+      imgElement.style.display = "block";
+      imgElement.style.marginLeft = "auto";
+      imgElement.style.marginRight = "auto";
     }
-
-    // ইমেজটি দৃশ্যমান করা
+    
     imgElement.style.opacity = "1";
   }
+
+  // এই অতিরিক্ত ফাংশনটি যোগ করুন:
+  // যেসব ইমেজ ইতোমধ্যে লোড হয়ে গেছে (ক্যাশ থেকে), সেগুলোকে হ্যান্ডেল করার জন্য
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('img[onload]').forEach(img => {
+      if (img.complete) {
+        showImage(img);
+      }
+    });
+  });
 </script>
+
 
 
 <script>
@@ -467,6 +474,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
