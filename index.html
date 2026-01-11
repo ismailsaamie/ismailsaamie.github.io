@@ -429,28 +429,19 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
   function showImage(imgElement) {
     // ইমেজটি কি কোনো টেবিলের ভেতরে আছে?
     const isInTable = imgElement.closest('table');
-    
+
     if (isInTable) {
-      imgElement.style.display = "inline-block";
-      imgElement.style.verticalAlign = "middle";
+        // টেবিলের ভেতর থাকলে পাশাপাশি
+        imgElement.style.display = "inline-block";
+        imgElement.style.verticalAlign = "middle";
     } else {
-      imgElement.style.display = "block";
-      imgElement.style.marginLeft = "auto";
-      imgElement.style.marginRight = "auto";
+        // টেবিলের বাইরে থাকলে নিচে নিচে (ব্লক)
+        imgElement.style.display = "block";
     }
-    
+
+    // ইমেজটি দৃশ্যমান করা
     imgElement.style.opacity = "1";
   }
-
-  // এই অতিরিক্ত ফাংশনটি যোগ করুন:
-  // যেসব ইমেজ ইতোমধ্যে লোড হয়ে গেছে (ক্যাশ থেকে), সেগুলোকে হ্যান্ডেল করার জন্য
-  document.addEventListener('DOMContentLoaded', (event) => {
-    document.querySelectorAll('img[onload]').forEach(img => {
-      if (img.complete) {
-        showImage(img);
-      }
-    });
-  });
 </script>
 
 
@@ -474,6 +465,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
