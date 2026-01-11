@@ -441,33 +441,41 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 
 
-    <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
-<script>
+    <script>
   (function() {
     const checkImages = () => {
       const imgs = document.getElementsByTagName('img');
       for (let img of imgs) {
-        // ইমেজ যদি লোড হয়ে থাকে (ক্যাশ বা লাইভ)
         if (img.complete && img.naturalWidth > 0) {
           const isInTable = img.closest('table');
           
-          // স্টাইল ফোর্সফুলি সেট করা হচ্ছে
-          img.style.setProperty('display', isInTable ? 'inline-block' : 'block', 'important');
+          // স্টাইল ফোর্সফুলি রিসেট করা হচ্ছে
           img.style.setProperty('opacity', '1', 'important');
           img.style.setProperty('height', 'auto', 'important');
           img.style.setProperty('visibility', 'visible', 'important');
+          img.style.setProperty('overflow', 'visible', 'important');
+
+          if (isInTable) {
+            img.style.setProperty('display', 'inline-block', 'important');
+            img.style.setProperty('width', '45%', 'important'); // টেবিলের জন্য সাইজ
+          } else {
+            img.style.setProperty('display', 'block', 'important');
+            // ১ পিক্সেল উইডথ সরিয়ে আপনার দেওয়া অরিজিনাল সাইজ ফিরিয়ে আনবে
+            img.style.setProperty('width', 'auto', 'important'); 
+            img.style.setProperty('margin', '10px auto', 'important');
+          }
         }
       }
     };
 
-    // বারবার চেক করবে যতক্ষণ না সব ইমেজ লোড হয় (Interval)
     const interval = setInterval(checkImages, 500);
     window.addEventListener('load', () => {
       checkImages();
-      setTimeout(() => clearInterval(interval), 5000); // ৫ সেকেন্ড পর চেক বন্ধ হবে
+      setTimeout(() => clearInterval(interval), 5000);
     });
   })();
 </script>
+
 
 
 
@@ -497,6 +505,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
