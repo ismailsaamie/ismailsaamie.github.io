@@ -330,10 +330,8 @@ footer{
       alt="Rounded Image" class="rounded-image"
          height="280px" 
          width="283.7px" 
-         style="display: none; margin: 0 auto;" 
       onload="showImage(this)" 
-     style="position: absolute; visibility: hidden; height: 1px; width: 1px; opacity: 0;">
-</div> 
+style="display: none; opacity: 0;"></div> 
 
 <section>
     <h2>Welcome!</h2> 
@@ -350,11 +348,8 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
       alt="Rounded Image" class="rounded-image"
          height="233px" 
          width="283.7px" 
-         loading="lazy"
-      style="display: none; margin: 0 auto;"
       onload="showImage(this)" 
-     style="position: absolute; visibility: hidden; height: 1px; width: 1px; opacity: 0;">
-     
+style="display: none; opacity: 0;">     
 </p><section>
     <h2>Education</h2>
     <div class="card">
@@ -369,11 +364,8 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
       alt="Rounded Image" class="rounded-image"
          height="280px" 
          width="283.7px" 
-         loading="lazy"
-      style="display: none; margin: 0 auto;"
       onload="showImage(this)" 
-       style="position: absolute; visibility: hidden; height: 1px; width: 1px; opacity: 0;">
-
+style="display: none; opacity: 0;">
 </p>
 
   <section><h2>Present Profession</h2>
@@ -387,11 +379,9 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
       alt="Rounded Image" class="rounded-image"
          height="280px" 
          width="283.7px" 
-         loading="lazy"
-      style="display: none; margin: 0 auto;"
+  
       onload="showImage(this)" 
-     style="position: absolute; visibility: hidden; height: 1px; width: 1px; opacity: 0;">
-</p>
+style="display: none; opacity: 0;"></p>
  
     <section><h2>Interests</h2>
     <div class="card">
@@ -403,11 +393,8 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
       alt="Rounded Image" class="rounded-image"
          height="216px" 
          width="283.7px" 
-         loading="lazy"
-      style="display: none; margin: 0 auto;"
       onload="showImage(this)" 
-     style="position: absolute; visibility: hidden; height: 1px; width: 1px; opacity: 0;">
-      </p>
+style="display: none; opacity: 0;">      </p>
 
   
     <section><h2>Family Status</h2>
@@ -422,10 +409,8 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
       alt="Rounded Image" class="rounded-image"
          height="216px" 
          width="283.7px" 
-         loading="lazy"
-      style="display: none; margin: 0 auto;"
       onload="showImage(this)" 
-     style="position: absolute; visibility: hidden; height: 1px; width: 1px; opacity: 0;">      </p><section><h2>Contact Info</h2>
+style="display: none; opacity: 0;">     </p><section><h2>Contact Info</h2>
     <div class="card">
       <p><strong>📨 Email:</strong> ismailsaamie971@gmail.com</p>
       <p><strong>📞 Mobile:</strong> 01770400971</p>
@@ -452,19 +437,24 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
-  function showImage(img) {
-    // ইমেজ লোড হলে এই ক্লাসটি যোগ হবে
-    img.classList.add('loaded');
-    
-    // টেবিলের ভেতর থাকলে একরকম, বাইরে থাকলে অন্যরকম
-    if (img.closest('table')) {
-      img.style.display = "inline-block";
+  function showImage(imgElement) {
+    const isInTable = imgElement.closest('table');
+
+    if (isInTable) {
+      // টেবিলের ভেতর থাকলে পাশাপাশি সেন্টারে থাকবে
+      imgElement.style.display = "inline-block";
+      imgElement.style.verticalAlign = "middle";
     } else {
-      img.style.display = "block";
+      // টেবিলের বাইরে থাকলে ফুল উইডথ এবং ব্লক হবে
+      imgElement.style.display = "block";
+      imgElement.style.width = "100%"; // প্রয়োজনমতো ১০০% বা অটো দিন
+      imgElement.style.margin = "10px auto";
     }
+    
+    // ইমেজটি দৃশ্যমান করা
+    imgElement.style.opacity = "1";
   }
 </script>
-
 
 
 
@@ -490,6 +480,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
