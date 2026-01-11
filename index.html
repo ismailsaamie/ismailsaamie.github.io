@@ -425,40 +425,40 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
-  function handleAllImages() {
-    // পেজের সব ইমেজ ধরবে যেগুলোতে onload দেওয়া আছে
-    const allImages = document.querySelectorAll('img');
+  (function() {
+    // পেজের সব ইমেজ খুঁজে বের করবে
+    const images = document.querySelectorAll('img');
 
-    allImages.forEach(img => {
-      // যদি ইমেজটি অলরেডি লোড হয়ে থাকে (ক্যাশড ইমেজ সহ)
+    images.forEach(img => {
+      // ফাংশন যা ইমেজ দেখানোর কাজ করবে
+      const revealImage = (el) => {
+        const isInTable = el.closest('table');
+        if (isInTable) {
+          el.style.display = "inline-block";
+          el.style.verticalAlign = "middle";
+        } else {
+          el.style.display = "block";
+          el.style.margin = "10px auto"; // সেন্টারে রাখার জন্য
+        }
+        el.style.opacity = "1";
+      };
+
+      // যদি ইমেজটি আগেই লোড হয়ে থাকে (Cache)
       if (img.complete) {
-        applyImageStyle(img);
+        revealImage(img);
       } else {
-        // যদি লোড হতে বাকি থাকে, তবে লোড হওয়ার পর ফাংশন কল হবে
-        img.onload = function() {
-          applyImageStyle(this);
-        };
+        // যদি লোড হতে সময় নেয়
+        img.addEventListener('load', () => revealImage(img));
+        
+        // যদি ইমেজ লোড হতে ফেইল করে, তাও যেন নিচের লেখা উপরে না উঠে থাকে
+        img.addEventListener('error', () => {
+          img.style.display = "none";
+        });
       }
     });
-  }
-
-  function applyImageStyle(img) {
-    const isInTable = img.closest('table');
-    
-    if (isInTable) {
-      img.style.display = "inline-block";
-      img.style.verticalAlign = "middle";
-    } else {
-      img.style.display = "block";
-      img.style.marginLeft = "auto";
-      img.style.marginRight = "auto";
-    }
-    img.style.opacity = "1";
-  }
-
-  // পেজ লোড হওয়ার সাথে সাথে চেক করবে
-  window.onload = handleAllImages;
+  })();
 </script>
+
 
 
 
@@ -481,6 +481,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
