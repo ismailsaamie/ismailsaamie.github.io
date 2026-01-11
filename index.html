@@ -204,6 +204,26 @@ h2{
   /* অথবা দুটি মান দিয়ে ওভাল আকৃতি তৈরি করতে: */
   /* border-radius: 30px 50px; */
 }
+img {
+  /* শুরুতে ইমেজগুলো একদম অদৃশ্য এবং কোনো জায়গা নিবে না */
+  height: 0;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+img.loaded {
+  /* লোড হওয়ার পর আসল সাইজ পাবে */
+  height: auto !important;
+  width: 100% !important; /* টেবিলের বাইরে ফুল উইডথ */
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: opacity 0.5s ease;
+}
+
+table img.loaded {
+  margin: 5px;
+}
 
 
 /* CARD */
@@ -432,24 +452,19 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
-  function showImage(imgElement) {
-    // লোড হওয়ার পর সব লুকানো স্টাইল মুছে ফেলা হচ্ছে
-    imgElement.style.position = "static";
-    imgElement.style.visibility = "visible";
-    imgElement.style.height = "auto";
-    imgElement.style.width = "auto"; // অথবা আপনার প্রয়োজন অনুযায়ী (যেমন ১০০%)
-    imgElement.style.opacity = "1";
-
-    const isInTable = imgElement.closest('table');
-    if (isInTable) {
-        imgElement.style.display = "inline-block";
-        imgElement.style.width = "45%"; // টেবিলের জন্য সাইজ
+  function showImage(img) {
+    // ইমেজ লোড হলে এই ক্লাসটি যোগ হবে
+    img.classList.add('loaded');
+    
+    // টেবিলের ভেতর থাকলে একরকম, বাইরে থাকলে অন্যরকম
+    if (img.closest('table')) {
+      img.style.display = "inline-block";
     } else {
-        imgElement.style.display = "block";
-        imgElement.style.width = "100%"; // বাইরের জন্য ফুল উইডথ
+      img.style.display = "block";
     }
   }
 </script>
+
 
 
 
@@ -475,6 +490,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
