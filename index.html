@@ -51,230 +51,154 @@
   
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+<script>
+  (function() {
+    function reveal() {
+      document.querySelectorAll('img').forEach(img => {
+        if (img.complete && img.naturalWidth > 0) {
+          const isInTable = img.closest('table');
+          img.classList.add(isInTable ? 'show-inline' : 'show-block');
+        } else {
+          img.onload = function() {
+            const isInTable = this.closest('table');
+            this.classList.add(isInTable ? 'show-inline' : 'show-block');
+          };
+        }
+      });
+    }
+    reveal(); // পেজ লোড হওয়া মাত্র একবার চেক করবে
+    window.addEventListener('load', reveal); // ক্যাশ সমস্যার সমাধান
+    setInterval(reveal, 1000); // নতুন ইমেজের জন্য
+  })();
+</script>
 
 <style>
-body{
-  margin:0;
-  background:#D9D6FF;
+/* 1. GENERAL & BODY */
+body {
+  margin: 0;
+  background: #D9D6FF;
   font-family: 'Texturina', serif;
-  scroll-behavior:smooth;
+  scroll-behavior: smooth;
 }
 
-/* HEADER */
-header{
-  background:linear-gradient(to top,#34d399,#60a5fa,#f472b6);
-  color:white;
-  text-align:center;
-  padding:4rem 2rem 3rem;
-  font-family:"Grenze Gotisch", serif;
-}
-header h1 {
-      font-size: 4.5rem;
-      -webkit-background-clip: gradient;
-      -webkit-text-fill-color: #FFE3FD;
-      text-shadow: 3.3px 3.8px purple;
-      border-left:2.5px solid #1C4163;
-      border-right:2.5px solid #1C4163;
-    }
-header p{
-  font-family:"Iceland", sans-serif;
-  font-size:1.6rem;
-  color:#370A4D;
-}
-
-.arabic-text {
-      font-family: "Aref Ruqaa", serif;
-      font-size: 2.3rem;
-      color: #4C7825;
-      text-align: center;
-      margin-top: 1rem;
-    }
-  /* Header animation */
-@keyframes fadeSlideIn {
-  from {
-    opacity: 0.1;
-    transform: translateY(-95px);
-  }
-  to {
-    opacity: 30;
-    transform: translateY(0);
-  }
+/* 2. HEADER */
+header {
+  background: linear-gradient(to top, #34d399, #60a5fa, #f472b6);
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem 3rem;
+  font-family: "Grenze Gotisch", serif;
 }
 
 header h1 {
+  font-size: 4.5rem;
+  -webkit-background-clip: text; /* এটা 'text' হবে */
+  -webkit-text-fill-color: #FFE3FD;
+  text-shadow: 3.3px 3.8px purple;
+  border-left: 2.5px solid #1C4163;
+  border-right: 2.5px solid #1C4163;
   animation: fadeSlideIn 1.3s ease-out forwards;
   opacity: 0;
-  animation-delay: 0s;
 }
+
 header p {
+  font-family: "Iceland", sans-serif;
+  font-size: 1.6rem;
+  color: #370A4D;
   animation: fadeSlideIn 0.9s ease-out forwards;
   opacity: 0;
-  animation-delay: 0s;
 }
+
 .arabic-text {
+  font-family: "Aref Ruqaa", serif;
+  font-size: 2.3rem;
+  color: #4C7825;
+  text-align: center;
+  margin-top: 1rem;
   animation: fadeSlideIn 0.6s ease-out forwards;
   opacity: 0;
-  animation-delay: 0s;
-}
-  .card {
-  opacity: 1000;
-  transform: translateY(40px);
-  transition: all  0.9s ease-out;
 }
 
-.card.visible {
-  opacity: 1000;
-  transform: translateY(0);
-}
-.image-wrap{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-img[loading="lazy"] {
-    display: block; /* যাতে ব্রাউজার ইমেজটি ডিটেক্ট করতে পারে */
-    height: 1px;    /* প্রায় জিরো হাইট, যাতে ফাঁকা জায়গা না থাকে */
-    width: 1px;     /* একদম ছোট বিন্দু হয়ে থাকবে */
-    opacity: 0;
-    overflow: hidden;
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-30px); } /* গ্যাপ কমানো হয়েছে */
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* NAV */
-nav{
-  position:sticky;
-  top:0;
-  z-index:999;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:1.2rem;
-  background:linear-gradient(to right,#543699,#ee0979,#543699);
-  padding:0.73rem;
-  font-weight:bold;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.7);
-}
-nav a{
-  color:#F9FFD0;
-  text-decoration:none;
-}
-nav.scrolled{
-  backdrop-filter:blur(7px);
-}
-nav a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0px;
-  width: 100%;
-  height: 3px;
-  background: #B5FF0B;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.4s ease-out;
-  border-radius: 2px;
-}
-
-nav a:hover {
-  color: #80FF35;
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
-}
-
-nav a:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-/* SECTION */
-section{
-  padding:1.1rem;
-  max-width:1000px;
-  margin:1.4rem auto;
-  background:rgba(255,255,255,.92);
-  border-radius:16px;
-  box-shadow:0 8px 20px rgba(0,0,0,.15);
-}
-h2{
-  font-size:2.2rem;
-  color:#023F57;
-  border-bottom:3px solid #A89608;
-  padding-bottom:.5rem;
-}
-  .rounded-image {
-  border-radius: 16px; /* কোণাগুলোর বাঁকানোর পরিমাণ */
-  /* অথবা দুটি মান দিয়ে ওভাল আকৃতি তৈরি করতে: */
-  /* border-radius: 30px 50px; */
-}
-  <style>
-  /* সব ইমেজ শুরুতে অদৃশ্য থাকবে এবং জায়গা নেবে না */
-  img {
-    display: none;
-    opacity: 0;
-    border-radius: 15px !important; /* আপনার কাঙ্ক্ষিত রেডিয়াস */
-    overflow: hidden;
-  }
-
-  /* টেবিলের বাইরের ইমেজের জন্য */
-  img.show-block {
-    display: block !important;
-    margin: 15px auto;
-    opacity: 1;
-  }
-
-  /* টেবিলের ভেতরের ইমেজের জন্য */
-  img.show-inline {
-    display: inline-block !important;
-    vertical-align: middle;
-    opacity: 1;
-    max-width: 45%; /* টেবিলের জন্য কন্ট্রোল */
-  }
-</style>
-
+/* 3. IMAGE SYSTEM (এটাই আপনার সমস্যার সমাধান) */
 img {
-  /* শুরুতে ইমেজগুলো একদম অদৃশ্য এবং কোনো জায়গা নিবে না */
-  height: 0;
-  width: 0;
+  display: none; /* শুরুতে সব ইমেজ লুকিয়ে থাকবে */
   opacity: 0;
-  visibility: hidden;
-}
-
-img.loaded {
-  /* লোড হওয়ার পর আসল সাইজ পাবে */
-  height: auto !important;
-  width: 100% !important; /* টেবিলের বাইরে ফুল উইডথ */
-  opacity: 1 !important;
-  visibility: visible !important;
+  border-radius: 15px !important; /* সব ইমেজের কোনা বাঁকানো */
+  overflow: hidden;
   transition: opacity 0.5s ease;
 }
 
-table img.loaded {
+/* টেবিলের বাইরের ইমেজের জন্য */
+img.show-block {
+  display: block !important;
+  margin: 15px auto;
+  opacity: 1;
+  /* width এবং height HTML ট্যাগ থেকে আসবে */
+}
+
+/* টেবিলের ভেতরের ইমেজের জন্য */
+img.show-inline {
+  display: inline-block !important;
+  vertical-align: middle;
+  opacity: 1;
+  max-width: 45%; /* যাতে ২টা পাশাপাশি ধরে */
   margin: 5px;
 }
 
-
-/* CARD */
-.card{
-  background:linear-gradient(to bottom right,#FFD8D7,#ace0f9);
-  border-left:8px solid #44660C;
-  border-radius:12px;
-  margin:1.5rem 0;
-  padding:1.3rem;
-  transition: transform 0.9s, box-shadow 0.9s;
+/* 4. NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  background: linear-gradient(to right, #543699, #ee0979, #543699);
+  padding: 0.73rem;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
 
-/* TABLE */
-.last-table-container{
-  width:100%;
-  overflow-x:auto;
+nav a {
+  color: #F9FFD0;
+  text-decoration: none;
+  position: relative;
 }
-table{
-  width:100%;
-  border-collapse:collapse;
+
+nav a:hover { color: #80FF35; }
+
+/* 5. SECTIONS & CARDS */
+section {
+  padding: 1.1rem;
+  max-width: 1000px;
+  margin: 1.4rem auto;
+  background: rgba(255, 255, 255, .92);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
 }
-th,td{
-  border:1px solid #ccc;
-  padding:10px;
-  text-align:left;
+
+.card {
+  background: linear-gradient(to bottom right, #FFD8D7, #ace0f9);
+  border-left: 8px solid #44660C;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  transform: translateY(40px);
+  transition: all 0.9s ease-out;
 }
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 6. TABLE */
 .last-table-container {
   width: 100%;
   overflow-x: auto;
@@ -283,53 +207,30 @@ th,td{
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
-.last-table-container table {
+table {
   width: 100%;
   border-collapse: collapse;
-  word-wrap: break-word;
 }
 
-.last-table-container th,
-.last-table-container td {
+th, td {
   border: 1px solid #ccc;
   padding: 12px;
   text-align: center;
   vertical-align: middle;
 }
 
-.last-table-container th {
-  background: linear-gradient(to top right,#C8DBAC,#9DBBFC,#C8DBAC);
-  color: #044506;
-}
+th { background: linear-gradient(to top right, #C8DBAC, #9DBBFC, #C8DBAC); color: #044506; }
+td { background: linear-gradient(to top right, #FFE1FE, #9DBBFC, #C8DBAC); }
 
-.last-table-container td {
-  background: linear-gradient(to top right,#FFE1FE,#9DBBFC,#C8DBAC);
-}
-
-
-/* মোবাইল স্ক্রিনের জন্য */
-@media (max-width: 600px) {
-  .last-table-container table {
-    font-size: 0.8rem;
-  }
-  .last-table-container th,
-  .last-table-container td {
-    padding: 10px;
-  }
-  .last-table-container img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-
-/* FOOTER */
-footer{
-  background:linear-gradient(to right,#34d399,#60a5fa,#f472b6);
-  color:red;
-  text-align:center;
-  padding:.5rem;
+/* 7. FOOTER */
+footer {
+  background: linear-gradient(to right, #34d399, #60a5fa, #f472b6);
+  color: #370A4D;
+  text-align: center;
+  padding: 1.5rem;
 }
 </style>
+
 </head>
 
 <body>
@@ -515,6 +416,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
