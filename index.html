@@ -420,14 +420,28 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
-    <script>
+<script>
   function showImage(imgElement) {
-    // ইমেজ লোড হওয়ার পর ডিসপ্লে ব্লক হবে, যাতে নিচের লেখা নিচে নেমে যায়
-imgElement.style.display = "inline-block";
-    // ইমেজটি স্মুথলি দেখানোর জন্য অপাসিটি ১ করে দেওয়া হলো
+    // ইমেজটি কি কোনো টেবিলের ভেতরে আছে? 
+    // .closest('table') দিয়ে আমরা তা সহজেই চেক করতে পারি
+    const isInTable = imgElement.closest('table');
+
+    if (isInTable) {
+        // টেবিলের ভেতর থাকলে পাশাপাশি দেখাবে
+        imgElement.style.display = "inline-block";
+        imgElement.style.verticalAlign = "middle";
+    } else {
+        // টেবিলের বাইরে থাকলে নিচে নিচে (ব্লক) দেখাবে
+        imgElement.style.display = "block";
+        imgElement.style.marginLeft = "auto";
+        imgElement.style.marginRight = "auto";
+    }
+
+    // ইমেজটি দৃশ্যমান করা
     imgElement.style.opacity = "1";
   }
 </script>
+
 
 <script>
   // Card animation on scroll
@@ -448,6 +462,7 @@ imgElement.style.display = "inline-block";
 
 </body>
 </html>
+
 
 
 
