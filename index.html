@@ -331,7 +331,8 @@ footer{
          height="280px" 
          width="283.7px" 
       onload="showImage(this)" 
-style="position: absolute; visibility: hidden; opacity: 0;"></div> 
+     style="opacity: 0; height: 0; overflow: hidden; display: block;">
+</div> 
 
 <section>
     <h2>Welcome!</h2> 
@@ -349,7 +350,8 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          height="233px" 
          width="283.7px" 
       onload="showImage(this)" 
-style="position: absolute; visibility: hidden; opacity: 0;">     
+     style="opacity: 0; height: 0; overflow: hidden; display: block;">
+   
 </p><section>
     <h2>Education</h2>
     <div class="card">
@@ -365,7 +367,8 @@ style="position: absolute; visibility: hidden; opacity: 0;">
          height="280px" 
          width="283.7px" 
       onload="showImage(this)" 
-style="position: absolute; visibility: hidden; opacity: 0;">
+     style="opacity: 0; height: 0; overflow: hidden; display: block;">
+
 </p>
 
   <section><h2>Present Profession</h2>
@@ -381,7 +384,8 @@ style="position: absolute; visibility: hidden; opacity: 0;">
          width="283.7px" 
   
       onload="showImage(this)" 
-style="position: absolute; visibility: hidden; opacity: 0;"></p>
+     style="opacity: 0; height: 0; overflow: hidden; display: block;">
+</p>
  
     <section><h2>Interests</h2>
     <div class="card">
@@ -394,7 +398,8 @@ style="position: absolute; visibility: hidden; opacity: 0;"></p>
          height="216px" 
          width="283.7px" 
       onload="showImage(this)" 
-style="position: absolute; visibility: hidden; opacity: 0;">      </p>
+     style="opacity: 0; height: 0; overflow: hidden; display: block;">
+      </p>
 
   
     <section><h2>Family Status</h2>
@@ -410,7 +415,8 @@ style="position: absolute; visibility: hidden; opacity: 0;">      </p>
          height="216px" 
          width="283.7px" 
       onload="showImage(this)" 
-style="position: absolute; visibility: hidden; opacity: 0;">     </p><section><h2>Contact Info</h2>
+     style="opacity: 0; height: 0; overflow: hidden; display: block;">
+     </p><section><h2>Contact Info</h2>
     <div class="card">
       <p><strong>📨 Email:</strong> ismailsaamie971@gmail.com</p>
       <p><strong>📞 Mobile:</strong> 01770400971</p>
@@ -438,21 +444,28 @@ style="position: absolute; visibility: hidden; opacity: 0;">     </p><section><h
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
   function showImage(img) {
-    // ইমেজ লোড হলে তাকে তার জায়গায় ফিরিয়ে আনা
-    img.style.position = "static"; 
-    img.style.visibility = "visible";
-    img.style.opacity = "1";
-
     const isInTable = img.closest('table');
+    // আপনার অরিজিনাল সাইজ ঠিক রেখে শুধু দৃশ্যমান করা
+    img.style.position = "relative"; 
+    img.style.opacity = "1";
+    img.style.height = "auto";
+    img.style.width = img.getAttribute('width') ? img.getAttribute('width') + 'px' : "auto";
+
     if (isInTable) {
         img.style.display = "inline-block";
-        img.style.verticalAlign = "middle";
     } else {
         img.style.display = "block";
-        img.style.margin = "10px auto"; // বাইরের ইমেজকে মাঝখানে রাখবে
     }
   }
+
+  // ক্যাশ করা ইমেজের জন্য ব্যাকআপ (এটি খুবই জরুরি)
+  window.addEventListener('load', () => {
+    document.querySelectorAll('img[onload]').forEach(img => {
+      if (img.complete) showImage(img);
+    });
+  });
 </script>
+
 
 
 
@@ -479,6 +492,7 @@ style="position: absolute; visibility: hidden; opacity: 0;">     </p><section><h
 
 </body>
 </html>
+
 
 
 
