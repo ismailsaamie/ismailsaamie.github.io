@@ -444,27 +444,33 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
 <script>
   function showImage(img) {
+    // ইমেজ লোড হলে এই ফাংশনটি কাজ করবে
     const isInTable = img.closest('table');
-    // আপনার অরিজিনাল সাইজ ঠিক রেখে শুধু দৃশ্যমান করা
-    img.style.position = "relative"; 
-    img.style.opacity = "1";
-    img.style.height = "auto";
-    img.style.width = img.getAttribute('width') ? img.getAttribute('width') + 'px' : "auto";
 
+    // টেবিলের ভেতর থাকলে inline-block, বাইরে থাকলে block
     if (isInTable) {
         img.style.display = "inline-block";
+        img.style.verticalAlign = "middle";
     } else {
         img.style.display = "block";
+        img.style.margin = "10px auto";
     }
+    
+    // ইমেজটি দৃশ্যমান করে দিন
+    img.style.opacity = "1";
+    img.style.height = "auto";
   }
 
-  // ক্যাশ করা ইমেজের জন্য ব্যাকআপ (এটি খুবই জরুরি)
-  window.addEventListener('load', () => {
+  // পেজ ওপেন হওয়ার সাথে সাথে একবার চেক করবে (ক্যাশ করা ইমেজের জন্য)
+  document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll('img[onload]').forEach(img => {
-      if (img.complete) showImage(img);
+      if (img.complete) {
+        showImage(img);
+      }
     });
   });
 </script>
+
 
 
 
@@ -492,6 +498,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
