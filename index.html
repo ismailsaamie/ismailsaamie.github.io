@@ -441,7 +441,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 
 
-    <script>
+<script>
   (function() {
     const checkImages = () => {
       const imgs = document.getElementsByTagName('img');
@@ -449,20 +449,29 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
         if (img.complete && img.naturalWidth > 0) {
           const isInTable = img.closest('table');
           
-          // স্টাইল ফোর্সফুলি রিসেট করা হচ্ছে
+          // ১. দৃশ্যমান করা
           img.style.setProperty('opacity', '1', 'important');
-          img.style.setProperty('height', 'auto', 'important');
           img.style.setProperty('visibility', 'visible', 'important');
-          img.style.setProperty('overflow', 'visible', 'important');
+          img.style.setProperty('overflow', 'hidden', 'important');
+
+          // ২. আপনার দেওয়া রেডিয়াস (এখানে আপনার পছন্দের মাপ দিন)
+          img.style.setProperty('border-radius', '15px', 'important'); 
+
+          // ৩. মাপ ঠিক করা (ট্যাগ থেকে width/height টেনে আনা)
+          let attrWidth = img.getAttribute('width');
+          let attrHeight = img.getAttribute('height');
+
+          if (attrWidth) img.style.setProperty('width', attrWidth + 'px', 'important');
+          if (attrHeight) img.style.setProperty('height', attrHeight + 'px', 'important');
 
           if (isInTable) {
             img.style.setProperty('display', 'inline-block', 'important');
-            img.style.setProperty('width', '45%', 'important'); // টেবিলের জন্য সাইজ
+            // টেবিলের ভেতর আপনার দেওয়া মাপ বড় হলে সেটাকে কন্ট্রোল করা
+            img.style.setProperty('max-width', '45%', 'important');
           } else {
             img.style.setProperty('display', 'block', 'important');
-            // ১ পিক্সেল উইডথ সরিয়ে আপনার দেওয়া অরিজিনাল সাইজ ফিরিয়ে আনবে
-            img.style.setProperty('width', 'auto', 'important'); 
-            img.style.setProperty('margin', '10px auto', 'important');
+            img.style.setProperty('margin', '15px auto', 'important');
+            img.style.setProperty('max-width', '100%', 'important');
           }
         }
       }
@@ -475,6 +484,8 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
     });
   })();
 </script>
+
+
 
 
 
@@ -505,6 +516,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
