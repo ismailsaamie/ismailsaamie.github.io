@@ -307,7 +307,7 @@ footer{
          width="283.7px" 
          style="display: none; margin: 0 auto;" 
       onload="showImage(this)" 
-     style="opacity: 0; transition: opacity 0.5s ease-in-out;">
+     style="display: none; opacity: 0; transition: opacity 0.5s ease-in-out;">
 </div> 
 
 <section>
@@ -327,7 +327,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          width="283.7px" 
          loading="lazy"
       onload="showImage(this)" 
-     style="opacity: 0; transition: opacity 0.5s ease-in-out;">
+     style="display: none; opacity: 0; transition: opacity 0.5s ease-in-out;">
 </p><section>
     <h2>Education</h2>
     <div class="card">
@@ -344,7 +344,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          width="283.7px" 
          loading="lazy"
       onload="showImage(this)" 
-     style="opacity: 0; transition: opacity 0.5s ease-in-out;">
+     style="display: none; opacity: 0; transition: opacity 0.5s ease-in-out;">
 </p>
 
   <section><h2>Present Profession</h2>
@@ -360,7 +360,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          width="283.7px" 
          loading="lazy"
       onload="showImage(this)" 
-     style="opacity: 0; transition: opacity 0.5s ease-in-out;">
+     style="display: none; opacity: 0; transition: opacity 0.5s ease-in-out;">
 </p>
  
     <section><h2>Interests</h2>
@@ -375,7 +375,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          width="283.7px" 
          loading="lazy"
       onload="showImage(this)" 
-     style="opacity: 0; transition: opacity 0.5s ease-in-out;">
+     style="display: none; opacity: 0; transition: opacity 0.5s ease-in-out;">
       </p>
 
   
@@ -393,7 +393,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
          width="283.7px" 
          loading="lazy"
       onload="showImage(this)" 
-     style="opacity: 0; transition: opacity 0.5s ease-in-out;">
+     style="display: none; opacity: 0; transition: opacity 0.5s ease-in-out;">
       </p><section><h2>Contact Info</h2>
     <div class="card">
       <p><strong>📨 Email:</strong> ismailsaamie971@gmail.com</p>
@@ -421,24 +421,14 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
     <!-- এখানে আপনার জাভাস্ক্রিপ্ট কোড শুরু হবে -->
     <script>
-      // showImage নামের ফাংশনটি সংজ্ঞায়িত করা হলো
-      function showImage(imgElement) {
-    // ইমেজ লোড হওয়ার পর সেটি দৃশ্যমান হবে
+  function showImage(imgElement) {
+    // ইমেজ লোড হওয়ার পর ডিসপ্লে ব্লক হবে, যাতে নিচের লেখা নিচে নেমে যায়
+    imgElement.style.display = "block";
+    // ইমেজটি স্মুথলি দেখানোর জন্য অপাসিটি ১ করে দেওয়া হলো
     imgElement.style.opacity = "1";
-}
+  }
+</script>
 
-        // যদি স্কেলিটন লোডারটি পাওয়া যায়, তবে সেটিকে লুকিয়ে দেওয়া হলো
-        if (skeletonLoader) {
-          skeletonLoader.style.display = 'none';
-        }
-
-        // যদি আসল ছবিটি পাওয়া যায়, তবে সেটিকে দৃশ্যমান করা হলো
-        // *গুরুত্বপূর্ণ: নিশ্চিত করুন আপনার CSS-এ main-img প্রথমে লুকানো আছে*
-        if (mainImage) {
-          mainImage.style.display = 'block'; // অথবা 'inline-block' আপনার লেআউট অনুযায়ী
-        }
-      }
-    </script>
 <script>
   // Card animation on scroll
   const observer = new IntersectionObserver((entries) => {
@@ -458,6 +448,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
+
 
 
 
