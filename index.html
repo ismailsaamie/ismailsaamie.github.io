@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,6 +119,12 @@ header p {
   animation: fadeSlideIn 0.6s ease-out forwards;
   opacity: 0;
 }
+h2{
+  font-size:2.2rem;
+  color:#023F57;
+  border-bottom:3px solid #A89608;
+  padding-bottom:.5rem;
+}
 
 @keyframes fadeSlideIn {
   from { opacity: 0; transform: translateY(-30px); } /* গ্যাপ কমানো হয়েছে */
@@ -170,15 +177,39 @@ nav a {
   text-decoration: none;
   position: relative;
 }
+nav.scrolled{
+  backdrop-filter:blur(7px);
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 3px;
+  background: #B5FF0B;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.6s ease-out;
+  border-radius: 2px;
+}
 
-nav a:hover { color: #80FF35; }
+nav a:hover { 
+  color: #80FF35;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
 
 /* 5. SECTIONS & CARDS */
 section {
   padding: 1.1rem;
   max-width: 1000px;
-  margin: 1.4rem auto;
-  background: rgba(255, 255, 255, .92);
+  margin: 1.38rem auto;
+  background: linear-gradient(to top,#FFFEF8,#F1FFEF,#FFFEF8);
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0,0,0,.15);
 }
@@ -187,8 +218,8 @@ section {
   background: linear-gradient(to bottom right, #FFD8D7, #ace0f9);
   border-left: 8px solid #44660C;
   border-radius: 12px;
-  margin: 1.5rem 0;
-  padding: 1.3rem;
+  margin: 1rem 0;
+  padding: 1.2rem;
   transform: translateY(40px);
   transition: all 0.9s ease-out;
 }
@@ -200,34 +231,50 @@ section {
 
 /* 6. TABLE */
 .last-table-container {
-  width: 100%;
+  width: 99.8%;
   overflow-x: auto;
-  margin-top: 1.7rem;
+  margin-top: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 table {
-  width: 100%;
+  width: 99.8%;
   border-collapse: collapse;
 }
 
 th, td {
-  border: 1px solid #ccc;
+  border: 1px solid #E3DE59;
   padding: 12px;
   text-align: center;
   vertical-align: middle;
 }
 
 th { background: linear-gradient(to top right, #C8DBAC, #9DBBFC, #C8DBAC); color: #044506; }
-td { background: linear-gradient(to top right, #FFE1FE, #9DBBFC, #C8DBAC); }
+td { background: linear-gradient(to top right, #C8DBAC, #9DBBFC, #C8DBAC); }
+
+/* মোবাইল স্ক্রিনের জন্য */
+@media (max-width: 600px) {
+  .last-table-container table {
+    font-size: 1rem;
+  }
+  .last-table-container th,
+  .last-table-container td {
+    padding: 10px;
+  }
+  .last-table-container img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 
 /* 7. FOOTER */
 footer {
   background: linear-gradient(to right, #34d399, #60a5fa, #f472b6);
   color: #370A4D;
   text-align: center;
-  padding: 1.5rem;
+  padding: 0.5rem;
 }
 </style>
 
@@ -249,7 +296,7 @@ footer {
   <a href="#contact">Contact</a>
 </nav>
 
- <section> <br> 
+ <section> 
 <div class="star-container">
     <!-- আপনার আসল ছবি -->
     <img src="إسماعيل السامي شعار أنيق.png" 
@@ -271,7 +318,7 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
     <img src="me 2.jpg" 
       alt="Rounded Image" class="rounded-image"
-         height="233px" 
+         height="220px" 
          width="283.7px" 
       onload="showImage(this)">   
 </p><section>
@@ -385,18 +432,6 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 </script>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
   // Card animation on scroll
   const observer = new IntersectionObserver((entries) => {
@@ -416,80 +451,3 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
