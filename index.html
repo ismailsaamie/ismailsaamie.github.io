@@ -438,6 +438,16 @@ At seventeen, standing in the year 2026, he remains a student of the vast unknow
     setInterval(revealImages, 1000);
   })();
 </script>
+<script>
+// script-এ যোগ করো
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('.about-img, .prof-img-wrap img').forEach(img => {
+    const rect = img.closest('section').getBoundingClientRect();
+    const offset = (rect.top / window.innerHeight) * 18;
+    img.style.transform = `translateY(${offset}px)`;
+  });
+}, {passive: true});
+</script>
 
 
 <script>
