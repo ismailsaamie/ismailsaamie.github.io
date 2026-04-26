@@ -523,54 +523,23 @@ section {
 
 /* ── CARD HEADER BANNER ── */
 .profile-card-header {
-  background: linear-gradient(135deg, #e8f4ff 0%, #f5eaff 50%, #eafff4 100%);
+  background: transparent;
   padding: 1.6rem 1.8rem 1.2rem;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  border-bottom: 1px solid rgba(84,54,153,.10);
+  border-bottom: 1px solid rgba(255,255,255,.05);
   position: relative;
   overflow: hidden;
+  z-index: 3;
 }
 
 .profile-card-header > div {
   text-align: center;
 }
 
-@media (max-width: 600px) {
-  .profile-card-header {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 0.7rem;
-    padding: 1.2rem 1rem;
-  }
-  .profile-card-header > span { display: none !important; }
-}
-.profile-card-header > div {
-  text-align: center;
-}
-
-/* subtle radial glow behind header */
 .profile-card-header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 15% 60%, rgba(52,211,153,.18) 0%, transparent 50%),
-    radial-gradient(ellipse at 82% 40%, rgba(244,114,182,.18) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 10%, rgba(96,165,250,.10) 0%, transparent 55%);
-  pointer-events: none;
-}
-
-.profile-card-header img {
-  display: block !important;
-  opacity: 1 !important;
-  height: 56px !important;
-  width: auto !important;
-  border-radius: 10px !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,.4);
-  filter: drop-shadow(0 0 8px rgba(96,165,250,.5));
-  position: relative;
+  display: none;
 }
 
 .profile-card-title {
@@ -578,24 +547,22 @@ section {
   font-family: "Grenze Gotisch", serif;
   font-size: 1.55rem;
   font-weight: 700;
-  background: linear-gradient(90deg, var(--green), var(--blue), var(--pink));
+  background: linear-gradient(90deg, #d8ffe9, #b9d8ff, #ffd1ea);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: 0.04em;
-  text-shadow: none;
   margin: 0;
 }
 
 .profile-card-subtitle {
   font-family: "Iceland", sans-serif;
   font-size: 0.82rem;
-  color: rgba(255,255,255,.38);
+  color: rgba(255,255,255,.55);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-top: 4px;
 }
-
 /* ── PHOTO STRIP ── */
 .photo-strip {
   display: flex;
@@ -629,8 +596,7 @@ section {
 
 /* ── DATA ROWS ── */
 .profile-rows {
-  padding: 0.4rem 0 0.6rem;
-}
+  padding: 0 0 0.6rem;
 
 .profile-row {
   display: grid;
