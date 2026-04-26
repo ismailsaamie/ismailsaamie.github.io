@@ -118,7 +118,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Subtle animated noise overlay on body */
 body::before {
   content: '';
   position: fixed;
@@ -144,7 +143,6 @@ header {
   overflow: hidden;
 }
 
-/* Floating orbs in header */
 header::before,
 header::after {
   content: '';
@@ -184,7 +182,6 @@ header h1 {
   overflow: hidden;
 }
 
-/* glittery light sweep — bam theke dane */
 header h1::after {
   content: '';
   position: absolute;
@@ -252,7 +249,6 @@ h2 {
   position: relative;
 }
 
-/* animated underline accent on h2 */
 h2::after {
   content: '';
   position: absolute;
@@ -449,7 +445,6 @@ section {
   overflow: hidden;
 }
 
-/* card shine layer */
 .card::before {
   content: '';
   position: absolute;
@@ -504,7 +499,7 @@ section {
   overflow-x: auto;
 }
 
-/* outer wrapper card */
+/* ── GLITTERING DARK CARD BODY ── */
 .profile-card {
   border-radius: 22px;
   border: 3px solid transparent;
@@ -514,21 +509,81 @@ section {
   background-size: auto, 350% 100%;
   animation: sectionBorderFlow 4s linear infinite;
   overflow: hidden;
+  position: relative;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,.04),
-    0 24px 60px rgba(13,9,42,.75),
+    0 0 0 1px rgba(255,255,255,.05),
+    0 24px 60px rgba(13,9,42,.8),
     0 4px 18px rgba(84,54,153,.55),
-    inset 0 1px 0 rgba(255,255,255,.04);
+    inset 0 1px 0 rgba(255,255,255,.05);
 }
 
-/* ── CARD HEADER BANNER ── */
+/* glitter shimmer sweep — bam theke dane */
+.profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 25%,
+    rgba(255,255,255,.03) 38%,
+    rgba(180,220,255,.09) 45%,
+    rgba(255,255,255,.13) 50%,
+    rgba(220,180,255,.09) 55%,
+    rgba(255,255,255,.03) 62%,
+    transparent 75%
+  );
+  transform: skewX(-15deg);
+  animation: cardGlitterSweep 5s 1s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+  filter: blur(0.5px);
+}
+
+/* sparkle dot cluster */
+.profile-card::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 100%; height: 100%;
+  background-image:
+    radial-gradient(1.5px 1.5px at 88% 12%, rgba(255,255,255,.55) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 72% 6%,  rgba(147,197,253,.70) 0%, transparent 100%),
+    radial-gradient(2px   2px   at 94% 28%, rgba(244,114,182,.45) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 80% 20%, rgba(255,255,255,.40) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 65% 35%, rgba(52,211,153,.40)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 92% 45%, rgba(255,255,255,.30) 0%, transparent 100%),
+    radial-gradient(2px   2px   at 55% 8%,  rgba(147,197,253,.35) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 78% 52%, rgba(244,114,182,.30) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 40% 18%, rgba(255,255,255,.25) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 96% 60%, rgba(52,211,153,.30)  0%, transparent 100%);
+  animation: sparkleTwinkle 3.5s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes cardGlitterSweep {
+  0%   { left: -60%; opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { left: 120%; opacity: 0; }
+}
+
+@keyframes sparkleTwinkle {
+  0%   { opacity: 0.4; transform: scale(1); }
+  50%  { opacity: 1;   transform: scale(1.08); }
+  100% { opacity: 0.5; transform: scale(0.95); }
+}
+
+/* ── CARD HEADER BANNER (now transparent to blend with glitter) ── */
 .profile-card-header {
   background: transparent;
   padding: 1.6rem 1.8rem 1.2rem;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,.05);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   position: relative;
   overflow: hidden;
   z-index: 3;
@@ -538,8 +593,20 @@ section {
   text-align: center;
 }
 
+/* remove the old light gradient pseudo-element */
 .profile-card-header::before {
-  display: none;
+  content: none;
+}
+
+.profile-card-header img {
+  display: block !important;
+  opacity: 1 !important;
+  height: 56px !important;
+  width: auto !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,.4);
+  filter: drop-shadow(0 0 8px rgba(96,165,250,.5));
+  position: relative;
 }
 
 .profile-card-title {
@@ -547,22 +614,24 @@ section {
   font-family: "Grenze Gotisch", serif;
   font-size: 1.55rem;
   font-weight: 700;
-  background: linear-gradient(90deg, #d8ffe9, #b9d8ff, #ffd1ea);
+  background: linear-gradient(90deg, var(--green), var(--blue), var(--pink));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: 0.04em;
+  text-shadow: none;
   margin: 0;
 }
 
 .profile-card-subtitle {
   font-family: "Iceland", sans-serif;
   font-size: 0.82rem;
-  color: rgba(255,255,255,.55);
+  color: rgba(255,255,255,0.55);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-top: 4px;
 }
+
 /* ── PHOTO STRIP ── */
 .photo-strip {
   display: flex;
@@ -572,6 +641,8 @@ section {
   padding: 1.4rem 1.8rem;
   background: linear-gradient(180deg, rgba(52,211,153,.04) 0%, rgba(96,165,250,.05) 100%);
   border-bottom: 1px solid rgba(255,255,255,.06);
+  position: relative;
+  z-index: 3;
 }
 
 .photo-strip img {
@@ -596,7 +667,10 @@ section {
 
 /* ── DATA ROWS ── */
 .profile-rows {
-  padding: 0 0 0.6rem;
+  padding: 0.4rem 0 0.6rem;
+  position: relative;
+  z-index: 3;
+}
 
 .profile-row {
   display: grid;
@@ -608,9 +682,7 @@ section {
 
 .profile-row:last-child { border-bottom: none; }
 
-.profile-row:hover {
-  background: rgba(255,255,255,.035);
-}
+.profile-row:hover { background: rgba(255,255,255,.035); }
 
 .profile-row-label {
   padding: 0.95rem 1.2rem 0.95rem 1.8rem;
@@ -650,12 +722,18 @@ section {
   line-height: 1.65;
 }
 
-/* alternating row tint */
 .profile-row:nth-child(even) { background: rgba(255,255,255,.018); }
 .profile-row:nth-child(even):hover { background: rgba(255,255,255,.04); }
 
 /* ── MOBILE ── */
 @media (max-width: 600px) {
+  .profile-card-header {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 0.7rem;
+    padding: 1.2rem 1rem;
+  }
+  .profile-card-header > span { display: none !important; }
   .profile-row { grid-template-columns: 1fr; }
   .profile-row-label { border-right: none; border-bottom: 1px solid rgba(255,255,255,.05); padding: 0.7rem 1rem; }
   .profile-row-value { padding: 0.65rem 1rem 0.9rem; font-size: 0.88rem; }
@@ -680,9 +758,17 @@ footer {
   overflow: hidden;
 }
 
+footer::before {
+  content: '✦  ✦  ✦';
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.5;
+  margin-bottom: 4px;
+  letter-spacing: 0.8em;
+}
 
 /* ═══════════════════════════════════════════
-   SECTION DIVIDERS (decorative)
+   SECTION DIVIDERS
 ═══════════════════════════════════════════ */
 .divider {
   text-align: center;
@@ -738,124 +824,20 @@ footer {
   box-shadow: 0 6px 24px rgba(238,9,121,.55);
   transform: translateY(-3px);
 }
-
-  /* =========================
-   FIX: profile card + divider + back button
-========================= */
-
-.profile-card-header {
-  background: transparent !important;
-  border-bottom: 1px solid rgba(255,255,255,.06) !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-.profile-card-header > div {
-  text-align: center !important;
-  position: relative;
-  z-index: 3;
-}
-
-.profile-card-header::before {
-  content: '' !important;
-  position: absolute !important;
-  inset: 0 !important;
-  background:
-    radial-gradient(ellipse at 15% 60%, rgba(52,211,153,.10) 0%, transparent 50%),
-    radial-gradient(ellipse at 82% 40%, rgba(244,114,182,.10) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 10%, rgba(96,165,250,.07) 0%, transparent 55%) !important;
-  pointer-events: none !important;
-  z-index: 1 !important;
-}
-
-.profile-card-header::after {
-  content: '' !important;
-  position: absolute !important;
-  top: 0;
-  left: -60%;
-  width: 40%;
-  height: 100%;
-  background: linear-gradient(
-    105deg,
-    transparent 25%,
-    rgba(255,255,255,.03) 40%,
-    rgba(255,255,255,.13) 50%,
-    rgba(255,255,255,.03) 60%,
-    transparent 75%
-  ) !important;
-  transform: skewX(-15deg);
-  animation: headerShimmer 5.2s ease-in-out infinite !important;
-  pointer-events: none !important;
-  z-index: 2 !important;
-}
-
-@keyframes headerShimmer {
-  0%   { left: -60%; opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { left: 120%; opacity: 0; }
-}
-
-.profile-card-title {
-  background: linear-gradient(90deg, #d8ffe9, #b9d8ff, #ffd1ea) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-}
-
-.profile-card-subtitle {
-  color: rgba(255,255,255,.55) !important;
-}
-
-.profile-rows {
-  padding-top: 0 !important;
-}
-
-.divider {
-  clear: both !important;
-  display: block !important;
-  width: 100% !important;
-  margin: 1.1rem auto !important;
-  text-align: center !important;
-  line-height: 1 !important;
-  position: relative !important;
-  z-index: 2 !important;
-}
-
-#back-top {
-  position: fixed !important;
-  bottom: 1.5rem !important;
-  right: 1.5rem !important;
-  z-index: 2147483647 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  pointer-events: auto !important;
-}
-
-#back-top.visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
 </style>
 
 </head>
 <body>
 
-<!-- SCROLL PROGRESS BAR -->
 <div id="scroll-bar"></div>
-
-<!-- BACK TO TOP -->
 <button id="back-top" aria-label="Back to top">↑</button>
 
-<!-- ══════════ HEADER ══════════ -->
 <header>
   <h1>Ismail Saamie</h1>
   <p>A prodigy of faith, excellence, and light – Alhamdulillah!</p>
   <div class="arabic-text">ألا لا آلاء إلا آلاء الإله</div>
 </header>
 
-<!-- ══════════ NAV ══════════ -->
 <nav id="main-nav">
   <a href="#education">Education</a>
   <a href="#profession">Profession</a>
@@ -864,20 +846,15 @@ footer {
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- ══════════ MARQUEE ══════════ -->
 <div class="marquee-wrap">
   <marquee scrollamount="4.95" direction="right" width="100%" behaviour="scroll">
     <div class="arabic-text-2"> أنا من أهوى، ومن أهوى أنا</div>
   </marquee>
 </div>
 
-<!-- ══════════ INTRO ══════════ -->
 <section>
   <div class="star-container">
-    <img src="إسماعيل السامي شعار أنيق.webp"
-      alt="Rounded Image" class="rounded-image"
-      height="280px" width="283.7px"
-      onload="showImage(this)">
+    <img src="إسماعيل السامي شعار أنيق.webp" alt="Rounded Image" class="rounded-image" height="280px" width="283.7px" onload="showImage(this)">
   </div>
   <section>
     <h2>Welcome!</h2>
@@ -891,11 +868,9 @@ footer {
 
 <div class="divider">✦ ✦ ✦</div>
 
-<!-- ══════════ EDUCATION ══════════ -->
 <section id="education">
   <p align="center">
-    <img src="me 2.webp" alt="Rounded Image" class="rounded-image"
-      height="220px" width="283.7px" onload="showImage(this)">
+    <img src="me 2.webp" alt="Rounded Image" class="rounded-image" height="220px" width="283.7px" onload="showImage(this)">
   </p>
   <section>
     <h2>Education</h2>
@@ -910,11 +885,9 @@ footer {
 
 <div class="divider">✦ ✦ ✦</div>
 
-<!-- ══════════ PROFESSION ══════════ -->
 <section id="profession">
   <p align="center">
-    <img src="name_designed (1).webp" alt="Rounded Image" class="rounded-image"
-      height="280px" width="283.7px" onload="showImage(this)">
+    <img src="name_designed (1).webp" alt="Rounded Image" class="rounded-image" height="280px" width="283.7px" onload="showImage(this)">
   </p>
   <section>
     <h2>Present Profession</h2>
@@ -926,11 +899,9 @@ footer {
 
 <div class="divider">✦ ✦ ✦</div>
 
-<!-- ══════════ INTERESTS ══════════ -->
 <section id="interests">
   <p align="center">
-    <img src="me.webp" alt="Rounded Image" class="rounded-image"
-      height="280px" width="283.7px" onload="showImage(this)">
+    <img src="me.webp" alt="Rounded Image" class="rounded-image" height="280px" width="283.7px" onload="showImage(this)">
   </p>
   <section>
     <h2>Interests</h2>
@@ -943,11 +914,9 @@ footer {
 
 <div class="divider">✦ ✦ ✦</div>
 
-<!-- ══════════ FAMILY ══════════ -->
 <section id="family">
   <p align="center">
-    <img src="IMG_20260408_101443.webp" align="center" alt="Rounded Image" class="rounded-image"
-      height="283.7px" width="229.5px" onload="showImage(this)">
+    <img src="IMG_20260408_101443.webp" align="center" alt="Rounded Image" class="rounded-image" height="283.7px" width="229.5px" onload="showImage(this)">
   </p>
   <section>
     <h2>Family Status</h2>
@@ -959,12 +928,9 @@ footer {
 
 <div class="divider">✦ ✦ ✦</div>
 
-<!-- ══════════ CONTACT ══════════ -->
 <section id="contact">
   <p align="center">
-    <img src="Airbrush-IMAGE-ENHANCER-1768134380031-1768134380031 (1).webp" align="center"
-      alt="Rounded Image" class="rounded-image"
-      height="216px" width="283.7px" onload="showImage(this)">
+    <img src="Airbrush-IMAGE-ENHANCER-1768134380031-1768134380031 (1).webp" align="center" alt="Rounded Image" class="rounded-image" height="216px" width="283.7px" onload="showImage(this)">
   </p>
   <section>
     <h2>Contact Info</h2>
@@ -983,83 +949,58 @@ footer {
 <div class="last-table-container">
   <div class="profile-card">
 
-    <!-- Header -->
-  <div class="profile-card-header">
-  <img src="WhatsApp Image 2026-01-19 at 9.33.21 PM-Photoroom_edited.webp" alt="logo">
-  <div>
-    <div class="profile-card-title">A Short Glance on Ismail Saamie...</div>
-    <div class="profile-card-subtitle">Personal Profile Summary · 2026</div>
-  </div>
-  <span style="width:158px;display:block;"></span>
-</div>
+    <div class="profile-card-header">
+      <img src="WhatsApp Image 2026-01-19 at 9.33.21 PM-Photoroom_edited.webp" alt="logo">
+      <div>
+        <div class="profile-card-title">A Short Glance on Ismail Saamie...</div>
+        <div class="profile-card-subtitle">Personal Profile Summary · 2026</div>
+      </div>
+      <span style="width:158px;display:block;"></span>
+    </div>
 
-    <!-- Photo Strip -->
     <div class="photo-strip">
       <img src="সর.webp" height="98px" width="81px" onload="showImage(this)">
       <img src="images (5).webp" height="98px" width="163px" onload="showImage(this)">
       <img src="cr.webp" height="98px" width="163px" onload="showImage(this)">
     </div>
 
-    <!-- Data Rows -->
     <div class="profile-rows">
-
       <div class="profile-row">
-        <div class="profile-row-label">
-          <span class="label-badge"><span class="label-icon">✦</span>Name</span>
-        </div>
+        <div class="profile-row-label"><span class="label-badge"><span class="label-icon">✦</span>Name</span></div>
         <div class="profile-row-value">Ismail Saamie.</div>
       </div>
-
       <div class="profile-row">
-        <div class="profile-row-label">
-          <span class="label-badge"><span class="label-icon">📅</span>Date of Birth</span>
-        </div>
+        <div class="profile-row-label"><span class="label-badge"><span class="label-icon">📅</span>Date of Birth</span></div>
         <div class="profile-row-value">12/03/2009.</div>
       </div>
-
       <div class="profile-row">
-        <div class="profile-row-label">
-          <span class="label-badge"><span class="label-icon">🎓</span>Academic Learning</span>
-        </div>
+        <div class="profile-row-label"><span class="label-badge"><span class="label-icon">🎓</span>Academic Learning</span></div>
         <div class="profile-row-value">Hifzul Quran (2019) from Dhaka &amp; Gajipur, Mutawassitah (2022) from Madaripur, Sanabia Ulya (2025) from Gopalgonj, PEC (2019), Dakhil (2024).</div>
       </div>
-
       <div class="profile-row">
-        <div class="profile-row-label">
-          <span class="label-badge"><span class="label-icon">💼</span>Present Occupation</span>
-        </div>
+        <div class="profile-row-label"><span class="label-badge"><span class="label-icon">💼</span>Present Occupation</span></div>
         <div class="profile-row-value">Mainly Student of Fazeelat &amp; Alim, and Adjoining Teacher of a madrasah.</div>
       </div>
-
       <div class="profile-row">
-        <div class="profile-row-label">
-          <span class="label-badge"><span class="label-icon">🌿</span>Interests</span>
-        </div>
+        <div class="profile-row-label"><span class="label-badge"><span class="label-icon">🌿</span>Interests</span></div>
         <div class="profile-row-value">Quranic Science, Arabic Literature, Philosophical Epistemology, Political Philosophy, Comparative Religion, Seerah, World history.</div>
       </div>
-
       <div class="profile-row">
-        <div class="profile-row-label">
-          <span class="label-badge"><span class="label-icon">🏡</span>Family</span>
-        </div>
+        <div class="profile-row-label"><span class="label-badge"><span class="label-icon">🏡</span>Family</span></div>
         <div class="profile-row-value">Smallest of all members. Father: S M Osman Ali, the only sister is the eldest among 4 siblings. Other 2 brothers are: Salman Qasemi and Saidul Mahdie. The parents are famous as nobles &amp; they are completely religious minded.</div>
       </div>
+    </div>
 
-    </div><!-- /profile-rows -->
-  </div><!-- /profile-card -->
+  </div>
 </div>
 
 <br>
 
-<!-- ══════════ FOOTER ══════════ -->
 <footer>
   © Ismail Saamie, 2026
 </footer>
 
-
-<!-- ══════════════════ SCRIPTS ══════════════════ -->
 <script>
-  /* Image reveal */
   (function() {
     function revealImages() {
       document.querySelectorAll('img').forEach(img => {
@@ -1081,7 +1022,6 @@ footer {
 </script>
 
 <script>
-  /* Card scroll animation */
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -1091,21 +1031,16 @@ footer {
 </script>
 
 <script>
-  /* Scroll progress bar */
   const bar = document.getElementById('scroll-bar');
   window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     bar.style.width = (scrolled / maxScroll * 100) + '%';
   });
-
-  /* Nav scrolled class */
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 80);
   });
-
-  /* Back to top button */
   const btn = document.getElementById('back-top');
   window.addEventListener('scroll', () => {
     btn.classList.toggle('visible', window.scrollY > 300);
