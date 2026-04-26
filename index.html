@@ -738,6 +738,105 @@ footer {
   box-shadow: 0 6px 24px rgba(238,9,121,.55);
   transform: translateY(-3px);
 }
+
+  /* =========================
+   FIX: profile card + divider + back button
+========================= */
+
+.profile-card-header {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255,255,255,.06) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.profile-card-header > div {
+  text-align: center !important;
+  position: relative;
+  z-index: 3;
+}
+
+.profile-card-header::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    radial-gradient(ellipse at 15% 60%, rgba(52,211,153,.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 82% 40%, rgba(244,114,182,.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 10%, rgba(96,165,250,.07) 0%, transparent 55%) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.profile-card-header::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 25%,
+    rgba(255,255,255,.03) 40%,
+    rgba(255,255,255,.13) 50%,
+    rgba(255,255,255,.03) 60%,
+    transparent 75%
+  ) !important;
+  transform: skewX(-15deg);
+  animation: headerShimmer 5.2s ease-in-out infinite !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+
+@keyframes headerShimmer {
+  0%   { left: -60%; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { left: 120%; opacity: 0; }
+}
+
+.profile-card-title {
+  background: linear-gradient(90deg, #d8ffe9, #b9d8ff, #ffd1ea) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.profile-card-subtitle {
+  color: rgba(255,255,255,.55) !important;
+}
+
+.profile-rows {
+  padding-top: 0 !important;
+}
+
+.divider {
+  clear: both !important;
+  display: block !important;
+  width: 100% !important;
+  margin: 1.1rem auto !important;
+  text-align: center !important;
+  line-height: 1 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+#back-top {
+  position: fixed !important;
+  bottom: 1.5rem !important;
+  right: 1.5rem !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: auto !important;
+}
+
+#back-top.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
 </style>
 
 </head>
