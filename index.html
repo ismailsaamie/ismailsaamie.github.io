@@ -16,13 +16,13 @@
 <meta property="og:description" content="Discover about Ismail Saamie's background, work, and interests.">
 <meta property="og:url" content="https://ismailsaamie.github.io/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://ismailsaamie.github.io/IMG_20260408_101443.webp">
+<meta property="og:image" content="https://ismailsaamie.github.io/me.webp">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ismail Saamie | Personal Website">
 <meta name="twitter:description" content="Explore my professional life, hobbies, and more.">
-<meta name="twitter:image" content="https://ismailsaamie.github.io/IMG_20260408_101443.webp">
+<meta name="twitter:image" content="https://ismailsaamie.github.io/me.jpg">
 
 <meta name="theme-color" content="#f472b6">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -45,7 +45,7 @@
     "@type": "EducationalOrganization",
     "name": "Darut Taqwa Ideal Madrasah"
   },
-  "image": "https://ismailsaamie.github.io/IMG_20260408_101443.webp"
+  "image": "https://ismailsaamie.github.io/me.webp"
 }
 </script>
   
@@ -495,52 +495,189 @@ section {
 }
 
 /* ═══════════════════════════════════════════
-   TABLE
+   TABLE — PREMIUM PROFILE CARD
 ═══════════════════════════════════════════ */
 .last-table-container {
-  width: 99.8%;
+  max-width: 1000px;
+  margin: 1.8rem auto 0;
+  padding: 0 0 2rem;
   overflow-x: auto;
-  margin-top: 1.5rem;
-  border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(0,0,0,.2);
 }
 
-table {
-  width: 99.8%;
-  border-collapse: collapse;
-  border-radius: 12px;
+/* outer wrapper card */
+.profile-card {
+  border-radius: 22px;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(145deg, #130d2a 0%, #071820 38%, #0a1a10 72%, #160b2e 100%) padding-box,
+    linear-gradient(90deg, var(--green), var(--blue), var(--pink), var(--purple), var(--green)) border-box;
+  background-size: auto, 350% 100%;
+  animation: sectionBorderFlow 4s linear infinite;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.04),
+    0 24px 60px rgba(13,9,42,.75),
+    0 4px 18px rgba(84,54,153,.55),
+    inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+/* ── CARD HEADER BANNER ── */
+.profile-card-header {
+  background: linear-gradient(135deg, #0e1a2e 0%, #1a0b30 45%, #071f15 100%);
+  padding: 1.6rem 1.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  position: relative;
   overflow: hidden;
 }
 
-th, td {
-  border: 1px solid #E3DE59;
-  padding: 13px 14px;
-  text-align: center;
-  vertical-align: middle;
+/* subtle radial glow behind header */
+.profile-card-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 60%, rgba(52,211,153,.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 82% 40%, rgba(244,114,182,.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 10%, rgba(96,165,250,.10) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.profile-card-header img {
+  display: block !important;
+  opacity: 1 !important;
+  height: 56px !important;
+  width: auto !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,.4);
+  filter: drop-shadow(0 0 8px rgba(96,165,250,.5));
+  position: relative;
+}
+
+.profile-card-title {
+  position: relative;
+  font-family: "Grenze Gotisch", serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--green), var(--blue), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.04em;
+  text-shadow: none;
+  margin: 0;
+}
+
+.profile-card-subtitle {
+  font-family: "Iceland", sans-serif;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,.38);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ── PHOTO STRIP ── */
+.photo-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.4rem 1.8rem;
+  background: linear-gradient(180deg, rgba(52,211,153,.04) 0%, rgba(96,165,250,.05) 100%);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.photo-strip img {
+  display: inline-block !important;
+  opacity: 1 !important;
+  border-radius: 14px !important;
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.12),
+    0 0 0 4px rgba(96,165,250,.2),
+    0 8px 24px rgba(0,0,0,.5) !important;
+  transition: transform 0.4s cubic-bezier(.34,1.56,.64,1), box-shadow 0.35s ease !important;
+  max-width: 48%;
+}
+
+.photo-strip img:hover {
+  transform: scale(1.06) translateY(-5px) !important;
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.2),
+    0 0 0 5px rgba(244,114,182,.4),
+    0 16px 36px rgba(0,0,0,.6) !important;
+}
+
+/* ── DATA ROWS ── */
+.profile-rows {
+  padding: 0.4rem 0 0.6rem;
+}
+
+.profile-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: start;
+  border-bottom: 1px solid rgba(255,255,255,.05);
   transition: background 0.25s;
 }
 
-th {
-  background: linear-gradient(135deg, #C8DBAC, #9DBBFC, #C8DBAC);
-  color: #044506;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+.profile-row:last-child { border-bottom: none; }
+
+.profile-row:hover {
+  background: rgba(255,255,255,.035);
 }
 
-td {
-  background: linear-gradient(135deg, #d9edcc 0%, #c8ddf8 100%);
+.profile-row-label {
+  padding: 0.95rem 1.2rem 0.95rem 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-right: 1px solid rgba(255,255,255,.06);
 }
 
-tr:hover th,
-tr:hover td {
-  background: linear-gradient(135deg, #bfdb9a, #a8cef5, #bfdb9a);
+.label-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(135deg, rgba(52,211,153,.15), rgba(96,165,250,.15));
+  border: 1px solid rgba(96,165,250,.22);
+  border-radius: 8px;
+  padding: 0.32rem 0.75rem;
+  font-family: "Iceland", sans-serif;
+  font-size: 0.82rem;
+  color: #93c5fd;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-weight: 600;
 }
 
+.label-icon {
+  font-size: 0.9rem;
+  filter: drop-shadow(0 0 4px rgba(147,197,253,.6));
+}
+
+.profile-row-value {
+  padding: 0.95rem 1.8rem 0.95rem 1.4rem;
+  font-family: 'Texturina', serif;
+  font-size: 0.96rem;
+  color: rgba(255,255,255,.82);
+  line-height: 1.65;
+}
+
+/* alternating row tint */
+.profile-row:nth-child(even) { background: rgba(255,255,255,.018); }
+.profile-row:nth-child(even):hover { background: rgba(255,255,255,.04); }
+
+/* ── MOBILE ── */
 @media (max-width: 600px) {
-  .last-table-container table { font-size: 0.92rem; }
-  .last-table-container th,
-  .last-table-container td { padding: 6px; }
-  .last-table-container img { height: 98px; width: 163px; }
+  .profile-row { grid-template-columns: 1fr; }
+  .profile-row-label { border-right: none; border-bottom: 1px solid rgba(255,255,255,.05); padding: 0.7rem 1rem; }
+  .profile-row-value { padding: 0.65rem 1rem 0.9rem; font-size: 0.88rem; }
+  .profile-card-title { font-size: 1.15rem; }
+  .photo-strip img { max-width: 46%; }
   header h1 { font-size: 3rem; }
   nav a { padding: 0.3rem 0.6rem; font-size: 0.85rem; }
 }
@@ -558,6 +695,15 @@ footer {
   font-size: 1rem;
   letter-spacing: 0.05em;
   overflow: hidden;
+}
+
+footer::before {
+  content: '✦  ✦  ✦';
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.5;
+  margin-bottom: 4px;
+  letter-spacing: 0.8em;
 }
 
 /* ═══════════════════════════════════════════
@@ -716,7 +862,7 @@ footer {
     <h2>Interests</h2>
     <div class="card">
       <p>Arabic literature, Islamic sciences, world history, philosophical epistemology, comparative religion, seerah, political philosophy, social science, logical debates, speech, writing and research. Thirsty for knowledge in every form.</p>
-      <p>Ismail was runner up in <a href="https://www.facebook.com/siratolympiad/">Bangladesh Sirat Olympiad</a> 2025.</p>
+      <p>Ismail was runner up in <a href="https://siratolympiad.com/">Bangladesh Sirat Olympiad</a> 2025.</p>
     </div>
   </section>
 </section>
@@ -754,38 +900,82 @@ footer {
       <p><strong>🏡 Home Address:</strong> Ahmadpara, Gopalgonj Sadar, Bangladesh</p>
       <p><strong>🔗 Facebook Profile Link:</strong> <a href="https://www.facebook.com/profile.php?id=61559552766899">Ismail Saamie</a></p>
       <p><strong>🔗 LinkedIn Profile Link:</strong> <a href="https://www.linkedin.com/in/ismail-saamie/">Ismail Saamie</a></p>
+      <p><strong>🔗 Instagram Profile Link:</strong> <a href="https://www.instagram.com/ismailsaamie/">Ismail Saamie</a></p>
     </div>
   </section>
 </section>
 
-<!-- ══════════ TABLE ══════════ -->
+<!-- ══════════ PROFILE SUMMARY CARD ══════════ -->
 <div class="last-table-container">
-  <img src="WhatsApp Image 2026-01-19 at 9.33.21 PM-Photoroom_edited.webp" height="53px" width="158px">
-  <table border="2">
-    <tr><th colspan="2"><strong>A Short Glance on Ismail Saamie...</strong></th></tr>
-    <tr>
-      <td style="text-align:center;vertical-align:middle;">
-        <p align="center"><img src="সর.webp" height="98px" width="81px" onload="showImage(this)"></p>
-      </td>
-      <td>
-        <div style="display:flex;justify-content:center;align-items:center;gap:5px;">
-          <img src="images (5).webp" align="center" height="98px" width="163px" onload="showImage(this)">
-          <img src="cr.webp" height="98px" width="163px" onload="showImage(this)">
+  <div class="profile-card">
+
+    <!-- Header -->
+    <div class="profile-card-header">
+      <img src="WhatsApp Image 2026-01-19 at 9.33.21 PM-Photoroom_edited.webp" alt="logo">
+      <div>
+        <div class="profile-card-title">A Short Glance on Ismail Saamie...</div>
+        <div class="profile-card-subtitle">Personal Profile Summary · 2026</div>
+      </div>
+    </div>
+
+    <!-- Photo Strip -->
+    <div class="photo-strip">
+      <img src="সর.webp" height="98px" width="81px" onload="showImage(this)">
+      <img src="images (5).webp" height="98px" width="163px" onload="showImage(this)">
+      <img src="cr.webp" height="98px" width="163px" onload="showImage(this)">
+    </div>
+
+    <!-- Data Rows -->
+    <div class="profile-rows">
+
+      <div class="profile-row">
+        <div class="profile-row-label">
+          <span class="label-badge"><span class="label-icon">✦</span>Name</span>
         </div>
-      </td>
-    </tr>
-    <tr align="left"><th>Name</th><th>Ismail Saamie.</th></tr>
-    <tr align="left"><th>Date of Birth</th><th>12/03/2009.</th></tr>
-    <tr align="left"><th>Academic Learning</th><th>Hifzul Quran (2019) from Dhaka &amp; Gajipur, Mutawassitah (2022) from Madaripur, Sanabia Ulya (2025) from Gopalgonj, PEC (2019), Dakhil (2024).</th></tr>
-    <tr align="left"><th>Present Occupation</th><th>Mainly Student of Fazeelat &amp; Alim, and Adjoining Teacher of a madrasah.</th></tr>
-    <tr align="left"><th>Interests</th><th>Quranic Science, Arabic Literature, Philosophical Epistemology, Political Philosophy, Comparative Religion, Seerah, World history.</th></tr>
-    <tr align="left"><th>Family</th><th>Smallest of all members. Father: S M Osman Ali, the only sister is the eldest among 4 siblings. Other 2 brothers are: Salman Qasemi and Saidul Mahdie. The parents are famous as nobles &amp; they are completely religious minded.</th></tr>
-  </table>
+        <div class="profile-row-value">Ismail Saamie.</div>
+      </div>
+
+      <div class="profile-row">
+        <div class="profile-row-label">
+          <span class="label-badge"><span class="label-icon">📅</span>Date of Birth</span>
+        </div>
+        <div class="profile-row-value">12/03/2009.</div>
+      </div>
+
+      <div class="profile-row">
+        <div class="profile-row-label">
+          <span class="label-badge"><span class="label-icon">🎓</span>Academic Learning</span>
+        </div>
+        <div class="profile-row-value">Hifzul Quran (2019) from Dhaka &amp; Gajipur, Mutawassitah (2022) from Madaripur, Sanabia Ulya (2025) from Gopalgonj, PEC (2019), Dakhil (2024).</div>
+      </div>
+
+      <div class="profile-row">
+        <div class="profile-row-label">
+          <span class="label-badge"><span class="label-icon">💼</span>Present Occupation</span>
+        </div>
+        <div class="profile-row-value">Mainly Student of Fazeelat &amp; Alim, and Adjoining Teacher of a madrasah.</div>
+      </div>
+
+      <div class="profile-row">
+        <div class="profile-row-label">
+          <span class="label-badge"><span class="label-icon">🌿</span>Interests</span>
+        </div>
+        <div class="profile-row-value">Quranic Science, Arabic Literature, Philosophical Epistemology, Political Philosophy, Comparative Religion, Seerah, World history.</div>
+      </div>
+
+      <div class="profile-row">
+        <div class="profile-row-label">
+          <span class="label-badge"><span class="label-icon">🏡</span>Family</span>
+        </div>
+        <div class="profile-row-value">Smallest of all members. Father: S M Osman Ali, the only sister is the eldest among 4 siblings. Other 2 brothers are: Salman Qasemi and Saidul Mahdie. The parents are famous as nobles &amp; they are completely religious minded.</div>
+      </div>
+
+    </div><!-- /profile-rows -->
+  </div><!-- /profile-card -->
 </div>
 
 <br>
-<div class="divider">✦ ✦ ✦</div>
-  <br>
+
 <!-- ══════════ FOOTER ══════════ -->
 <footer>
   © Ismail Saamie, 2026
