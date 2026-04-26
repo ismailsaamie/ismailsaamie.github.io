@@ -523,14 +523,14 @@ section {
 
 /* ── CARD HEADER BANNER ── */
 .profile-card-header {
-  background: linear-gradient(135deg, #0e1a2e 0%, #1a0b30 45%, #071f15 100%);
-  padding: 1.6rem 1.8rem 1.2rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 1.4rem;
-  border-bottom: 1px solid rgba(255,255,255,.07);
-  position: relative;
-  overflow: hidden;
+  /* বাকি সব আগের মতো */
+}
+
+.profile-card-header > div {
+  text-align: center;
 }
 
 /* subtle radial glow behind header */
@@ -907,7 +907,7 @@ footer {
       <div>
         <div class="profile-card-title">A Short Glance on Ismail Saamie...</div>
         <div class="profile-card-subtitle">Personal Profile Summary · 2026</div>
-      </div>
+      </div><span style="width:158px;display:block;"></span>
     </div>
 
     <!-- Photo Strip -->
