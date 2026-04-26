@@ -523,12 +523,29 @@ section {
 
 /* ── CARD HEADER BANNER ── */
 .profile-card-header {
+  background: linear-gradient(135deg, #e8f4ff 0%, #f5eaff 50%, #eafff4 100%);
+  padding: 1.6rem 1.8rem 1.2rem;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  /* বাকি সব আগের মতো */
+  border-bottom: 1px solid rgba(84,54,153,.10);
+  position: relative;
+  overflow: hidden;
 }
 
+.profile-card-header > div {
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .profile-card-header {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 0.7rem;
+    padding: 1.2rem 1rem;
+  }
+  .profile-card-header > span { display: none !important; }
+}
 .profile-card-header > div {
   text-align: center;
 }
@@ -902,13 +919,14 @@ footer {
   <div class="profile-card">
 
     <!-- Header -->
-    <div class="profile-card-header">
-      <img src="WhatsApp Image 2026-01-19 at 9.33.21 PM-Photoroom_edited.webp" alt="logo">
-      <div>
-        <div class="profile-card-title">A Short Glance on Ismail Saamie...</div>
-        <div class="profile-card-subtitle">Personal Profile Summary · 2026</div>
-      </div><span style="width:158px;display:block;"></span>
-    </div>
+  <div class="profile-card-header">
+  <img src="WhatsApp Image 2026-01-19 at 9.33.21 PM-Photoroom_edited.webp" alt="logo">
+  <div>
+    <div class="profile-card-title">A Short Glance on Ismail Saamie...</div>
+    <div class="profile-card-subtitle">Personal Profile Summary · 2026</div>
+  </div>
+  <span style="width:158px;display:block;"></span>
+</div>
 
     <!-- Photo Strip -->
     <div class="photo-strip">
