@@ -1103,6 +1103,30 @@
       .edu-item::before { left: -2.45rem; width: 15px; height: 15px; }
       .edu-item::after { left: -2.45rem; width: 5px; height: 5px; }
     }
+
+    /* ছোট পর্দায় টাইপরাইটার ইফেক্ট ফিট করার ব্যবস্থা */
+@media (max-width: 600px) {
+  .hero-subtitle {
+    font-size: 0.9rem;        /* ফন্ট ছোট করে পুরো টেক্সট যাতে ভিউপোর্টে ফিট হয় */
+  }
+
+  .typewriter {
+    animation-name: typing-mobile;  /* ডেস্কটপের keyframes-এর বদলে নতুন */
+    font-size: inherit;
+    white-space: nowrap;       /* এক লাইনে থাকবে, এটাই আসল টাইপরাইটার */
+    overflow: hidden;
+    border-right: 2px solid #370A4D;
+    vertical-align: middle;
+  }
+}
+
+/* মোবাইলের জন্য টাইপিং অ্যানিমেশন – শেষ পর্যন্ত 90vw চওড়া হবে */
+@keyframes typing-mobile {
+  0%   { max-width: 0; }
+  45%  { max-width: 90vw; }   /* মোবাইল স্ক্রিনের 90% এর বেশি যাবে না */
+  70%  { max-width: 90vw; }
+  100% { max-width: 0; }
+}
   </style>
 </head>
 <body>
