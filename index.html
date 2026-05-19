@@ -186,7 +186,12 @@
       position: relative;
     }
 
-    .typewriter {
+    /* ডেস্কটপে মোবাইলের দুই-লাইন লুকাও */
+    .typewriter-mobile {
+      display: none;
+    }
+
+    .typewriter-desktop {
       display: inline-block;
       white-space: nowrap;
       overflow: hidden;
@@ -209,72 +214,7 @@
       from, to { border-color: transparent; }
       50% { border-color: #370A4D; }
     }
-/* ডেস্কটপে মোবাইলের দুই-লাইন সংস্করণ লুকাও */
-.typewriter-mobile {
-  display: none;
-}
 
-/* ছোট পর্দায় ডেস্কটপের সংস্করণ লুকিয়ে দুই-লাইন দেখাও */
-@media (max-width: 600px) {
-  .typewriter-desktop {
-    display: none;   /* ডেস্কটপের এক লাইন লুকাও */
-  }
-
-  .typewriter-mobile {
-    display: block;  /* মোবাইলের দুই লাইন দেখাও */
-    font-size: 0.9rem;
-    color: #370A4D;
-    line-height: 1.4;
-  }
-
-  /* দুই লাইনের সাধারণ স্টাইল */
-  .typewriter-line {
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 2px solid #370A4D;  /* শেষ লাইনে কার্সর দেখা যাবে */
-    vertical-align: bottom;
-    animation-timing-function: steps(1, end); /* অক্ষরে অক্ষরে টাইপিং */
-    animation-fill-mode: forwards;
-  }
-
-  /* প্রথম লাইন – সাথে সাথে শুরু হবে */
-  .line1 {
-    animation-name: typing-line1;
-    animation-duration: 2.8s;  /* সময়টা চাইলে বাড়াতে/কমাতে পারো */
-    animation-delay: 0s;
-  }
-
-  /* দ্বিতীয় লাইন – প্রথম লাইনের শেষে শুরু হবে */
-  .line2 {
-    animation-name: typing-line2;
-    animation-duration: 2.4s;
-    animation-delay: 2.8s; /* প্রথম লাইন শেষ হওয়ার পর */
-    border-right: 2px solid #370A4D; /* দ্বিতীয় লাইনে কার্সর থাকবে */
-  }
-
-  /* প্রথম লাইনের জন্য অ্যানিমেশন */
-  @keyframes typing-line1 {
-    0%   { max-width: 0; }
-    100% { max-width: 260px; }  /* প্রথম লাইনের টেক্সট যতটুকু জায়গা নেয় */
-  }
-
-  /* দ্বিতীয় লাইনের জন্য অ্যানিমেশন */
-  @keyframes typing-line2 {
-    0%   { max-width: 0; }
-    100% { max-width: 210px; }  /* দ্বিতীয় লাইনের টেক্সটের জন্য উপযুক্ত প্রস্থ */
-  }
-
-  /* কার্সরের জ্বলা-নেভা অ্যানিমেশন শুধু শেষ লাইনে রাখো */
-  @keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: #370A4D; }
-  }
-  .line2 {
-    animation: typing-line2 2.4s steps(28, end) 2.8s forwards,
-               blink-caret 0.75s step-end infinite 2.8s;
-  }
-}
     /* Arabic greeting – bounce in from right */
     .arabic-text {
       font-family: "Aref Ruqaa", serif;
@@ -861,16 +801,28 @@
       margin-bottom: 2px;
     }
 
-.contact-value {
-  font-family: 'Texturina', serif;
-  font-size: 0.88rem;
-  color: #1a1a1a;
-  font-weight: 700;
-  line-height: 1.35;
-  /* word-break: break-all;  ← এটা সরিয়ে দাও */
-  overflow-wrap: break-word;  /* ← এটা যোগ করো */
-  word-break: normal;         /* ঐচ্ছিক, বাই ডিফল্টই নরমাল */
-}
+    /* কন্ট্যাক্ট ভ্যালুর বেস স্টাইল */
+    .contact-value {
+      font-family: 'Texturina', serif;
+      font-size: 0.88rem;
+      color: #1a1a1a;
+      font-weight: 700;
+      line-height: 1.35;
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
+
+    /* শুধু ইমেইলের জন্য break-all */
+    a[href^="mailto:"] .contact-value {
+      word-break: break-all !important;
+      overflow-wrap: normal !important;
+    }
+
+    /* অ্যাড্রেসের জন্য নিশ্চিত break-word */
+    .contact-item:not(a) .contact-value {
+      overflow-wrap: break-word;
+      word-break: normal;
+    }
 
     .social-row {
       display: grid;
@@ -1058,7 +1010,7 @@
 
     .profile-row {
       display: grid;
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: 240px 1fr;
       align-items: start;
       border-bottom: 1px solid rgba(255,255,255,.05);
       transition: background 0.25s;
@@ -1098,7 +1050,7 @@
     .profile-row:nth-child(even):hover { background: rgba(255,255,255,.04); }
 
     /* ═══════════════════════════════════════════
-       FOOTER (no stars)
+       FOOTER
     ═══════════════════════════════════════════ */
     footer {
       position: relative;
@@ -1171,29 +1123,59 @@
       .edu-item::after { left: -2.45rem; width: 5px; height: 5px; }
     }
 
-    /* ছোট পর্দায় টাইপরাইটার ইফেক্ট ফিট করার ব্যবস্থা */
-@media (max-width: 600px) {
-  .hero-subtitle {
-    font-size: 0.9rem;        /* ফন্ট ছোট করে পুরো টেক্সট যাতে ভিউপোর্টে ফিট হয় */
-  }
+    /* ছোট পর্দায় টাইপরাইটার দুই লাইনে ফিট */
+    @media (max-width: 600px) {
+      .typewriter-desktop {
+        display: none;
+      }
 
-  .typewriter {
-    animation-name: typing-mobile;  /* ডেস্কটপের keyframes-এর বদলে নতুন */
-    font-size: inherit;
-    white-space: nowrap;       /* এক লাইনে থাকবে, এটাই আসল টাইপরাইটার */
-    overflow: hidden;
-    border-right: 2px solid #370A4D;
-    vertical-align: middle;
-  }
-}
+      .typewriter-mobile {
+        display: block;
+        font-size: 0.9rem;
+        color: #370A4D;
+        line-height: 1.4;
+        text-align: center;
+      }
 
-/* মোবাইলের জন্য টাইপিং অ্যানিমেশন – শেষ পর্যন্ত 90vw চওড়া হবে */
-@keyframes typing-mobile {
-  0%   { max-width: 0; }
-  45%  { max-width: 90vw; }   /* মোবাইল স্ক্রিনের 90% এর বেশি যাবে না */
-  70%  { max-width: 90vw; }
-  100% { max-width: 0; }
-}
+      .typewriter-line {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid #370A4D;
+        vertical-align: bottom;
+        animation-timing-function: steps(1, end);
+        animation-fill-mode: forwards;
+      }
+
+      .line1 {
+        animation-name: typing-line1;
+        animation-duration: 2.8s;
+        animation-delay: 0s;
+      }
+
+      .line2 {
+        animation-name: typing-line2, blink-caret;
+        animation-duration: 2.4s, 0.75s;
+        animation-delay: 2.8s, 2.8s;
+        animation-iteration-count: 1, infinite;
+        animation-fill-mode: forwards, none;
+      }
+
+      @keyframes typing-line1 {
+        0%   { max-width: 0; }
+        100% { max-width: 260px; }
+      }
+
+      @keyframes typing-line2 {
+        0%   { max-width: 0; }
+        100% { max-width: 210px; }
+      }
+
+      @keyframes blink-caret {
+        from, to { border-color: transparent; }
+        50% { border-color: #370A4D; }
+      }
+    }
   </style>
 </head>
 <body>
@@ -1203,7 +1185,11 @@
   <header>
     <h1>Ismail Saamie</h1>
     <p class="hero-subtitle">
-      <span class="typewriter">A prodigy of faith, excellence, and light – Alhamdulillah!</span>
+      <span class="typewriter-desktop">A prodigy of faith, excellence, and light – Alhamdulillah!</span>
+      <span class="typewriter-mobile">
+        <span class="typewriter-line line1">A prodigy of faith, excellence,</span><br>
+        <span class="typewriter-line line2">and light – Alhamdulillah!</span>
+      </span>
     </p>
     <div class="arabic-text">ألا لا آلاء إلا آلاء الإله</div>
   </header>
@@ -1222,7 +1208,6 @@
     </marquee>
   </div>
 
-  <!-- Welcome section (unchanged) -->
   <section>
     <div class="star-container">
       <img src="إسماعيل السامي شعار أنيق.webp" alt="Ismail Saamie Logo" height="280px" width="283.7px">
@@ -1239,7 +1224,6 @@
 
   <div class="divider">✦ ✦ ✦</div>
 
-  <!-- Education timeline (world-class design) -->
   <section id="education">
     <p align="center">
       <img src="me 2.webp" alt="Ismail Saamie" height="220px" width="283.7px">
@@ -1367,7 +1351,6 @@
     </div>
   </section>
 
-  <!-- Profile summary card -->
   <div class="last-table-container">
     <div class="profile-card">
       <div class="profile-card-header">
