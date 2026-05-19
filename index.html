@@ -209,7 +209,72 @@
       from, to { border-color: transparent; }
       50% { border-color: #370A4D; }
     }
+/* ডেস্কটপে মোবাইলের দুই-লাইন সংস্করণ লুকাও */
+.typewriter-mobile {
+  display: none;
+}
 
+/* ছোট পর্দায় ডেস্কটপের সংস্করণ লুকিয়ে দুই-লাইন দেখাও */
+@media (max-width: 600px) {
+  .typewriter-desktop {
+    display: none;   /* ডেস্কটপের এক লাইন লুকাও */
+  }
+
+  .typewriter-mobile {
+    display: block;  /* মোবাইলের দুই লাইন দেখাও */
+    font-size: 0.9rem;
+    color: #370A4D;
+    line-height: 1.4;
+  }
+
+  /* দুই লাইনের সাধারণ স্টাইল */
+  .typewriter-line {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #370A4D;  /* শেষ লাইনে কার্সর দেখা যাবে */
+    vertical-align: bottom;
+    animation-timing-function: steps(1, end); /* অক্ষরে অক্ষরে টাইপিং */
+    animation-fill-mode: forwards;
+  }
+
+  /* প্রথম লাইন – সাথে সাথে শুরু হবে */
+  .line1 {
+    animation-name: typing-line1;
+    animation-duration: 2.8s;  /* সময়টা চাইলে বাড়াতে/কমাতে পারো */
+    animation-delay: 0s;
+  }
+
+  /* দ্বিতীয় লাইন – প্রথম লাইনের শেষে শুরু হবে */
+  .line2 {
+    animation-name: typing-line2;
+    animation-duration: 2.4s;
+    animation-delay: 2.8s; /* প্রথম লাইন শেষ হওয়ার পর */
+    border-right: 2px solid #370A4D; /* দ্বিতীয় লাইনে কার্সর থাকবে */
+  }
+
+  /* প্রথম লাইনের জন্য অ্যানিমেশন */
+  @keyframes typing-line1 {
+    0%   { max-width: 0; }
+    100% { max-width: 260px; }  /* প্রথম লাইনের টেক্সট যতটুকু জায়গা নেয় */
+  }
+
+  /* দ্বিতীয় লাইনের জন্য অ্যানিমেশন */
+  @keyframes typing-line2 {
+    0%   { max-width: 0; }
+    100% { max-width: 210px; }  /* দ্বিতীয় লাইনের টেক্সটের জন্য উপযুক্ত প্রস্থ */
+  }
+
+  /* কার্সরের জ্বলা-নেভা অ্যানিমেশন শুধু শেষ লাইনে রাখো */
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #370A4D; }
+  }
+  .line2 {
+    animation: typing-line2 2.4s steps(28, end) 2.8s forwards,
+               blink-caret 0.75s step-end infinite 2.8s;
+  }
+}
     /* Arabic greeting – bounce in from right */
     .arabic-text {
       font-family: "Aref Ruqaa", serif;
@@ -796,14 +861,16 @@
       margin-bottom: 2px;
     }
 
-    .contact-value {
-      font-family: 'Texturina', serif;
-      font-size: 0.88rem;
-      color: #1a1a1a;
-      font-weight: 700;
-      line-height: 1.35;
-      word-break: break-all;
-    }
+.contact-value {
+  font-family: 'Texturina', serif;
+  font-size: 0.88rem;
+  color: #1a1a1a;
+  font-weight: 700;
+  line-height: 1.35;
+  /* word-break: break-all;  ← এটা সরিয়ে দাও */
+  overflow-wrap: break-word;  /* ← এটা যোগ করো */
+  word-break: normal;         /* ঐচ্ছিক, বাই ডিফল্টই নরমাল */
+}
 
     .social-row {
       display: grid;
