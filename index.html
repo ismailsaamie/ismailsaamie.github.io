@@ -1124,58 +1124,58 @@
     }
 
     /* ছোট পর্দায় টাইপরাইটার দুই লাইনে ফিট */
-    @media (max-width: 600px) {
-      .typewriter-desktop {
-        display: none;
-      }
+    /* ══ মোবাইলে দুই লাইনের টাইপরাইটার (প্রথম লাইনে কোনো কার্সর থাকবে না) ══ */
+@media (max-width: 600px) {
+  .typewriter-desktop {
+    display: none;
+  }
 
-      .typewriter-mobile {
-        display: block;
-        font-size: 0.9rem;
-        color: #370A4D;
-        line-height: 1.4;
-        text-align: center;
-      }
+  .typewriter-mobile {
+    display: block;
+    font-size: 0.9rem;
+    color: #370A4D;
+    line-height: 1.4;
+    text-align: center;
+  }
 
-      .typewriter-line {
-        display: inline-block;
-        white-space: nowrap;
-        overflow: hidden;
-        border-right: 2px solid #370A4D;
-        vertical-align: bottom;
-        animation-timing-function: steps(1, end);
-        animation-fill-mode: forwards;
-      }
+  .typewriter-line {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: bottom;
+    animation-fill-mode: forwards;
+  }
 
-      .line1 {
-        animation-name: typing-line1;
-        animation-duration: 2.8s;
-        animation-delay: 0s;
-      }
+  /* প্রথম লাইন: কোনো কার্সর থাকবে না, শুধু টাইপ হবে */
+  .line1 {
+    border-right: 2px solid transparent;
+    animation: typing-line1 2.8s steps(31, end) 0s 1 forwards;
+  }
 
-      .line2 {
-        animation-name: typing-line2, blink-caret;
-        animation-duration: 2.4s, 0.75s;
-        animation-delay: 2.8s, 2.8s;
-        animation-iteration-count: 1, infinite;
-        animation-fill-mode: forwards, none;
-      }
+  /* দ্বিতীয় লাইন: টাইপ + জ্বলন্ত কার্সর */
+  .line2 {
+    border-right: 2px solid #370A4D;
+    animation:
+      typing-line2 2.4s steps(26, end) 2.8s 1 forwards,
+      blink-caret 0.75s step-end 2.8s infinite;
+  }
 
-      @keyframes typing-line1 {
-        0%   { max-width: 0; }
-        100% { max-width: 260px; }
-      }
+  @keyframes typing-line1 {
+    0%   { max-width: 0; border-right-color: #370A4D; }
+    99%  { max-width: 260px; border-right-color: #370A4D; }
+    100% { max-width: 260px; border-right-color: transparent; }
+  }
 
-      @keyframes typing-line2 {
-        0%   { max-width: 0; }
-        100% { max-width: 210px; }
-      }
+  @keyframes typing-line2 {
+    0%   { max-width: 0; }
+    100% { max-width: 210px; }
+  }
 
-      @keyframes blink-caret {
-        from, to { border-color: transparent; }
-        50% { border-color: #370A4D; }
-      }
-    }
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #370A4D; }
+  }
+}
   </style>
 </head>
 <body>
@@ -1296,7 +1296,7 @@
       <div class="olympiad-trophy">🏆</div>
       <div class="olympiad-text">
         <strong>Bangladesh Sirat Olympiad 2025 — Runner Up</strong>
-        <span>National-level Islamic knowledge competition · <a href="https://siratolympiad.com/" style="color:var(--purple);text-decoration:none;border-bottom:1px dotted var(--purple);">siratolympiad.com</a></span>
+        <span>National-level Islamic knowledge competition · <a href="https://www.facebook.com/siratolympiad" style="color:var(--purple);text-decoration:none;border-bottom:1px dotted var(--purple);">Bangladesh Sirat Olympiad</a></span>
       </div>
     </div>
   </section>
