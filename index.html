@@ -1123,8 +1123,7 @@
       .edu-item::after { left: -2.45rem; width: 5px; height: 5px; }
     }
 
-    /* ছোট পর্দায় টাইপরাইটার দুই লাইনে ফিট */
-    /* ══ মোবাইলে দুই লাইনের টাইপরাইটার (প্রথম লাইনে কোনো কার্সর থাকবে না) ══ */
+/* ══ মোবাইলে দুই লাইনের টাইপরাইটার (প্রথম লাইনে কোনো কার্সর থাকবে না, দ্বিতীয় লাইন শুরুতে লুকানো, ইনফিনিট লুপ) ══ */
 @media (max-width: 600px) {
   .typewriter-desktop {
     display: none;
@@ -1132,9 +1131,9 @@
 
   .typewriter-mobile {
     display: block;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     color: #370A4D;
-    line-height: 1.4;
+    line-height: 1.5;
     text-align: center;
   }
 
@@ -1143,21 +1142,27 @@
     white-space: nowrap;
     overflow: hidden;
     vertical-align: bottom;
-    animation-fill-mode: forwards;
+    animation-fill-mode: both;
   }
 
-  /* প্রথম লাইন: কোনো কার্সর থাকবে না, শুধু টাইপ হবে */
+  /* প্রথম লাইন: কার্সর জ্বলে না, টাইপ শেষে অদৃশ্য */
   .line1 {
     border-right: 2px solid transparent;
-    animation: typing-line1 2.8s steps(31, end) 0s 1 forwards;
+    animation: typing-line1 2.6s steps(31, end) 0s 1 both;
   }
 
-  /* দ্বিতীয় লাইন: টাইপ + জ্বলন্ত কার্সর */
+  /* দ্বিতীয় লাইন: শুরুতে একদম লুকানো, ২.৬ সেকেন্ড পর ভিজিবল হবে এবং টাইপিং + জ্বলন্ত কার্সর শুরু হবে */
   .line2 {
+    opacity: 0;
     border-right: 2px solid #370A4D;
-    animation:
-      typing-line2 2.4s steps(26, end) 2.8s 1 forwards,
-      blink-caret 0.75s step-end 2.8s infinite;
+    animation: 
+      showLine2 0s steps(1, end) 2.6s 1 both,
+      typing-line2 2.4s steps(26, end) 2.6s 1 both,
+      blink-caret 0.75s step-end 2.6s infinite;
+  }
+
+  @keyframes showLine2 {
+    to { opacity: 1; }
   }
 
   @keyframes typing-line1 {
@@ -1174,6 +1179,18 @@
   @keyframes blink-caret {
     from, to { border-color: transparent; }
     50% { border-color: #370A4D; }
+  }
+
+  /* একবার দুই লাইন লেখা হয়ে গেলে পুরো কন্টেইনার আবার রিপিট করবে */
+  .typewriter-mobile {
+    animation: restartWriter 5s steps(1, end) 5s infinite;
+  }
+
+  @keyframes restartWriter {
+    0%   { opacity: 1; }
+    50%  { opacity: 0; }
+    50.01% { opacity: 1; }
+    100% { opacity: 1; }
   }
 }
   </style>
